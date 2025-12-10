@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/chapter" element={<ChapterPage />} />
+          <Route path="/chapter/:chapterId" element={<ChapterPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/about" element={<AboutPage />} />

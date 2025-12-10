@@ -30,9 +30,12 @@ export function ChapterCard({ chapter }: ChapterCardProps) {
           <p>Time spent</p>
         </div>
       </div>
-      <button type="button" className="rounded-full border border-mint/30 px-4 py-2 text-sm text-mint">
-        Review quiz
-      </button>
+      <div className="flex items-center justify-between text-sm font-medium text-mint">
+        <span>Take quiz</span>
+        <span aria-hidden className="text-lg">
+          →
+        </span>
+      </div>
     </article>
   )
 }

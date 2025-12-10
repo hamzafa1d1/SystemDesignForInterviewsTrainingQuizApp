@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ChapterCard } from '../components/ChapterCard'
 import { MetricCard } from '../components/MetricCard'
 import { SectionHeader } from '../components/SectionHeader'
-import { chapters, landingStats, plannedFeatures } from '../data/mockChapters'
+import { chapters, landingStats, plannedFeatures } from '../data/content'
 
 const heroVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -10,6 +11,8 @@ const heroVariants = {
 }
 
 export function LandingPage() {
+  const availableChapters = chapters.filter((chapter) => chapter.questionCount > 0)
+
   return (
     <div className="space-y-12">
       <motion.section
@@ -71,9 +74,22 @@ export function LandingPage() {
           description="Cards show the question load, estimated duration, and how you did last time."
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {chapters.map((chapter) => (
-            <ChapterCard key={chapter.id} chapter={chapter} />
+          {availableChapters.map((chapter) => (
+            <Link key={chapter.id} to={`/chapter/${chapter.id}`} className="no-underline">
+              <ChapterCard chapter={chapter} />
+            </Link>
           ))}
+          <article className="glass-panel flex flex-col gap-4 p-6 text-white/70">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
+              <span role="img" aria-label="sparkles">
+                ✨
+              </span>
+              Coming soon
+            </div>
+            <h3 className="font-display text-2xl text-foam">More chapters incoming</h3>
+            <p>We are storyboarding the next quiz lanes—service boundaries, data growth, and beyond.</p>
+            <p className="text-sm text-white/50">Expect more cards to unlock as soon as their question banks are ready.</p>
+          </article>
         </div>
       </section>
 
