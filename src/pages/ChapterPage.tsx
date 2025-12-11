@@ -57,20 +57,41 @@ export function ChapterPage() {
                 <div className="space-y-3">
                   {(quiz.currentQuestion?.options ?? []).map((option, index) => {
                     const isSelected = quiz.selectedIndex === index
+                    const isCorrectOption = quiz.currentQuestion?.correctIndex === index
+                    const hasAnswered = quiz.hasAnsweredCurrent
+
+                    let visualClass = 'border-white/10 bg-white/5 text-white/80 hover:border-mint/40'
+                    if (hasAnswered) {
+                      visualClass = isCorrectOption
+                        ? 'border-mint/80 bg-mint/10 text-mint'
+                        : 'border-rose-400/60 bg-rose-500/10 text-rose-200'
+                    } else if (isSelected) {
+                      visualClass = 'border-mint/60 bg-mint/10 text-mint'
+                    }
+
+                    const animateProps = hasAnswered
+                      ? isCorrectOption
+                        ? { scale: [1, 1.05, 1], boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 24px rgba(185,245,216,0.35)', '0 0 0 rgba(0,0,0,0)'] }
+                        : isSelected
+                          ? { x: [0, -8, 8, -5, 5, 0] }
+                          : { opacity: 0.9 }
+                      : { scale: 1 }
+
                     return (
-                      <button
+                      <motion.button
                         key={option}
                         type="button"
+                        layout
                         onClick={() => quiz.selectOption(index)}
-                        className={`w-full rounded-2xl border px-4 py-3 text-left text-sm transition ${
-                          isSelected
-                            ? 'border-mint/60 bg-mint/10 text-mint'
-                            : 'border-white/10 bg-white/5 text-white/80 hover:border-mint/40'
-                        } ${quiz.isComplete ? 'cursor-not-allowed opacity-70' : ''}`}
+                        className={`w-full rounded-2xl border px-4 py-3 text-left text-sm transition ${visualClass} ${
+                          quiz.isComplete ? 'cursor-not-allowed opacity-70' : ''
+                        }`}
+                        animate={animateProps}
+                        transition={{ duration: hasAnswered && isSelected && !isCorrectOption ? 0.5 : 0.4 }}
                         disabled={quiz.isComplete}
                       >
                         {option}
-                      </button>
+                      </motion.button>
                     )
                   })}
                 </div>
