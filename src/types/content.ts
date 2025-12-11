@@ -40,9 +40,3 @@ export type QuizMetric = {
   value: string
   helper?: string
 }
-
-export type PlannedFeature = {
-  title: string
-  description: string
-  tag: string
-}

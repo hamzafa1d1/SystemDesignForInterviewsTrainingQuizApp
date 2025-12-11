@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { ChapterCard } from '../components/ChapterCard'
 import { MetricCard } from '../components/MetricCard'
 import { SectionHeader } from '../components/SectionHeader'
-import { landingStats, plannedFeatures } from '../data/content'
+import { landingStats } from '../data/content'
 import { useChaptersWithStats } from '../hooks/useChaptersWithStats'
 import coverImage from '../assets/systemDesignCover.jpg'
+import reviewThumbnail from '../assets/reviewThumbnail.png'
 
 const heroVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -117,21 +118,75 @@ export function LandingPage() {
           </article>
         </div>
       </section>
+      
+      <motion.section
+        className="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#04050d] via-[#0b1430] to-[#020203] p-1 text-white"
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <motion.a
+          href="https://blog.pragmaticengineer.com/system-design-interview-an-insiders-guide-review/"
+          target="_blank"
+          rel="noreferrer"
+          className="group relative grid overflow-hidden rounded-[32px] border border-white/10 bg-[#05060e]/70 text-left no-underline lg:grid-cols-[0.55fr_0.45fr]"
+          whileHover={{ scale: 1.01 }}
+          transition={{ type: 'spring', stiffness: 140, damping: 20 }}
+        >
+          <div className="relative p-8">
+            <motion.div
+              className="pointer-events-none absolute inset-0 opacity-40 blur-3xl"
+              animate={{ opacity: [0.3, 0.55, 0.3], rotate: [0, 5, -3, 0] }}
+              transition={{ duration: 12, repeat: Infinity }}
+              style={{
+                background:
+                  'radial-gradient(circle at 15% 20%, rgba(151,255,219,0.4), transparent 55%), radial-gradient(circle at 80% 0%, rgba(115,182,255,0.35), transparent 60%), radial-gradient(circle at 50% 85%, rgba(255,173,220,0.25), transparent 70%)',
+              }}
+            />
+            <div className="relative z-10 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.35em] text-white/60">
+              <span className="rounded-full border border-white/20 px-3 py-1">Review signal</span>
+              <span className="rounded-full border border-white/20 px-3 py-1">Pragmatic Engineer</span>
+            </div>
+            <div className="relative z-10 mt-6 space-y-3">
+              <p className="text-sm text-white/70">Independent take on the book&apos;s impact</p>
+              <h2 className="font-display text-3xl text-foam">Peek inside the full write-up</h2>
+            </div>
+            <div className="relative z-10 mt-8 inline-flex items-center gap-3 rounded-full border border-mint/40 px-5 py-2 text-sm font-semibold text-mint/90">
+              <span>Open review</span>
+              <motion.span
+                className="text-xl"
+                animate={{ x: [0, 6, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                ↗
+              </motion.span>
+            </div>
+          </div>
+          <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-black via-[#040618] to-[#010103]">
+            <motion.div
+              className="pointer-events-none absolute inset-x-0 top-8 z-0 mx-auto h-32 w-2/3 rounded-full bg-mint/30 blur-[100px] opacity-40"
+              animate={{ opacity: [0.2, 0.45, 0.2], scale: [0.9, 1.05, 0.9] }}
+              transition={{ duration: 6, repeat: Infinity }}
+            />
+            <motion.img
+              src={reviewThumbnail}
+              alt="Pragmatic Engineer review thumbnail"
+              className="relative z-10 w-full object-cover"
+              initial={{ y: 4, rotateX: 3 }}
+              animate={{ y: [4, -2, 4], rotateX: [3, 0, 3], scale: [1, 1.005, 1] }}
+              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ rotateY: -3, scale: 1.01 }}
+            />
+            <motion.div
+              className="pointer-events-none absolute inset-0 border border-white/10"
+              animate={{ opacity: [0.2, 0.5, 0.2] }}
+              transition={{ duration: 5, repeat: Infinity }}
+            />
+          </div>
+        </motion.a>
+      </motion.section>
 
-      <section className="space-y-6">
-        <SectionHeader eyebrow="Coming up" title="Planned niceties" description="Surface-level placeholders only." />
-        <div className="grid gap-6 md:grid-cols-3">
-          {plannedFeatures.map((feature) => (
-            <article key={feature.title} className="glass-panel space-y-4 p-6">
-              <span className="inline-flex w-fit rounded-full bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
-                {feature.tag}
-              </span>
-              <h3 className="font-display text-xl text-foam">{feature.title}</h3>
-              <p className="text-sm text-white/70">{feature.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
     </div>
   )
 }

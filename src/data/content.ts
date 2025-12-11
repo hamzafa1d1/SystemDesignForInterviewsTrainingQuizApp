@@ -1,5 +1,5 @@
 import chapterOneQuestions from './chapters/chapter_1_scale_from_zero_to_millions.json'
-import type { Chapter, PlannedFeature, Question, QuestionBank, QuizMetric } from '../types/content'
+import type { Chapter, Question, QuestionBank, QuizMetric } from '../types/content'
 
 const CHAPTER_ONE_ID = 'chapter_1_scale_from_zero_to_millions'
 
@@ -25,20 +25,3 @@ export const landingStats: QuizMetric[] = [
   { label: 'Avg. Session', value: '22m', helper: 'Focused review sprints' },
 ]
 
-export const plannedFeatures: PlannedFeature[] = [
-  {
-    title: 'Motivational Quotes',
-    description: 'Celebrate every completion with curated insights from top engineers.',
-    tag: 'Nice to have',
-  },
-  {
-    title: 'Personal Dashboard',
-    description: 'Visualize streaks, pacing, and focus zones from prior quizzes.',
-    tag: 'In backlog',
-  },
-  {
-    title: 'Support & Donations',
-    description: 'Let the community fuel ongoing improvements with a simple tip jar.',
-    tag: 'Community',
-  },
-]
