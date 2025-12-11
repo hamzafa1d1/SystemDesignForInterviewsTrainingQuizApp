@@ -12,12 +12,12 @@ function App() {
     <BrowserRouter>
       <AppLayout>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/chapter" element={<ChapterPage />} />
-          <Route path="/chapter/:chapterId" element={<ChapterPage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp" element={<LandingPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp/chapter" element={<ChapterPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp/chapter/:chapterId" element={<ChapterPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp/results" element={<ResultsPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp/dashboard" element={<DashboardPage />} />
+          <Route path="/SystemDesignForInterviewsTrainingQuizApp/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppLayout>
