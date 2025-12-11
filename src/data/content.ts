@@ -16,8 +16,6 @@ export const chapters: Chapter[] = [
     summary: 'DNS, load balancers, caches, CDNs, queues, and database patterns for the very first growth curve.',
     questionCount: typedChapterOneQuestions.length,
     etaMinutes: 35,
-    lastScore: 82,
-    timeSpentMinutes: 32,
   },
 ]
 

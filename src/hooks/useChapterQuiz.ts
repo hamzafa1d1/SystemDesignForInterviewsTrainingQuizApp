@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Question, QuizResult } from '../types/content'
-
-const QUIZ_RESULTS_STORAGE_KEY = 'sd_quiz_results_v1'
+import { persistResult } from '../utils/quizResultsStorage'
 
 type AnswerEntry = {
   selectedIndex: number
@@ -20,35 +19,6 @@ const formatClock = (seconds: number) => {
   const mins = Math.floor(seconds / 60)
   const secs = seconds % 60
   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
-}
-
-const readStoredResults = (): QuizResult[] => {
-  if (typeof window === 'undefined') {
-    return []
-  }
-
-  try {
-    const raw = window.localStorage.getItem(QUIZ_RESULTS_STORAGE_KEY)
-    if (!raw) return []
-    const parsed = JSON.parse(raw)
-    return Array.isArray(parsed) ? (parsed as QuizResult[]) : []
-  } catch {
-    return []
-  }
-}
-
-const persistResult = (result: QuizResult) => {
-  if (typeof window === 'undefined') {
-    return
-  }
-
-  try {
-    const existing = readStoredResults()
-    const updated = [result, ...existing].slice(0, 20)
-    window.localStorage.setItem(QUIZ_RESULTS_STORAGE_KEY, JSON.stringify(updated))
-  } catch {
-    // Swallow storage errors silently
-  }
 }
 
 export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapterQuizArgs) {
