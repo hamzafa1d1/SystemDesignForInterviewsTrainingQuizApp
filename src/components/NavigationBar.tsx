@@ -2,9 +2,7 @@ import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 const links = [
-  { to: '/', label: 'Landing' },
-  { to: '/results', label: 'Results' },
-  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
 ]
 

@@ -13,7 +13,7 @@ const heroVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-export function LandingPage() {
+export function HomePage() {
   const chapters = useChaptersWithStats()
   const availableChapters = chapters.filter((chapter) => chapter.questionCount > 0)
 
@@ -101,7 +101,7 @@ export function LandingPage() {
         />
         <div className="grid gap-6 md:grid-cols-2">
           {availableChapters.map((chapter) => (
-            <Link key={chapter.id} to={`/SystemDesignForInterviewsTrainingQuizApp/chapter/${chapter.id}`} className="no-underline">
+            <Link key={chapter.id} to={`/chapter/${chapter.id}`} className="no-underline">
               <ChapterCard chapter={chapter} />
             </Link>
           ))}

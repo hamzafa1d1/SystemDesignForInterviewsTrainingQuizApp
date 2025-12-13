@@ -146,10 +146,6 @@ export function ChapterPage() {
                   </p>
                 </div>
               )}
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70">
-                <p className="text-xs uppercase tracking-[0.4em] text-white/40">Upcoming figures</p>
-                <p className="mt-3">A placeholder for diagrams (consistency charts, flow maps, etc.).</p>
-              </div>
             </aside>
           </div>
         ) : (

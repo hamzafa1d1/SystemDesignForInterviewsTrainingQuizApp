@@ -6,12 +6,12 @@
     "type": "mcq_single",
     "question": "When a user types api.mysite.com into a browser, what is the primary role of DNS in the request flow?",
     "options": [
-      "Translating the domain name into an IP address for the client",
       "Encrypting the HTTP traffic between client and server",
       "Balancing traffic across multiple web servers",
+      "Translating the domain name into an IP address for the client",
       "Storing static assets like images and JavaScript files"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "DNS resolves the human-readable domain (such as api.mysite.com) into the IP address that the client uses to contact the server, as described in the request flow on page 3."
   },
   {
@@ -21,12 +21,12 @@
     "type": "mcq_single",
     "question": "What are the two main sources of traffic reaching the web server in the initial single-server design?",
     "options": [
-      "Web application and mobile application",
-      "Desktop application and IoT devices",
       "Internal admin tools and batch jobs",
-      "CDN and cache servers"
+      "Web application and mobile application",
+      "CDN and cache servers",
+      "Desktop application and IoT devices"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "In the starting design, traffic comes from a browser-based web app and a mobile app, both sending HTTP requests to the same web server as explained on page 3."
   },
   {
@@ -36,12 +36,12 @@
     "type": "mcq_single",
     "question": "Why is separating the web tier and database tier onto different servers useful?",
     "options": [
-      "It allows the web tier and database tier to be scaled independently",
       "It removes the need for DNS resolution",
+      "It makes joins in the database unnecessary",
       "It guarantees that no data will ever be lost",
-      "It makes joins in the database unnecessary"
+      "It allows the web tier and database tier to be scaled independently"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Moving the database to its own server lets you scale web traffic and data storage separately, which is highlighted when the design evolves from a single server to a two-tier setup on page 4."
   },
   {
@@ -51,12 +51,12 @@
     "type": "mcq_single",
     "question": "Which description best matches vertical scaling?",
     "options": [
-      "Adding more CPU or RAM to a single server",
       "Adding more servers to the pool behind a load balancer",
-      "Splitting a database into multiple shards",
-      "Moving session data into a shared store"
+      "Adding more CPU or RAM to a single server",
+      "Moving session data into a shared store",
+      "Splitting a database into multiple shards"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Vertical scaling means \"scaling up\" a single machine by giving it more resources like CPU or memory, as contrasted with horizontal scaling on page 5."
   },
   {
@@ -66,12 +66,12 @@
     "type": "mcq_single",
     "question": "What is the main purpose of a load balancer in the architecture?",
     "options": [
-      "Distribute incoming requests evenly across multiple web servers",
       "Store static assets closer to users",
       "Replicate data from master to slave databases",
+      "Distribute incoming requests evenly across multiple web servers",
       "Convert HTTP traffic into database queries"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The load balancer receives traffic on its public IP and forwards it across multiple backend servers, improving availability and handling failures as shown on page 6."
   },
   {
@@ -81,12 +81,12 @@
     "type": "mcq_single",
     "question": "In a typical master–slave database replication setup, which node handles write operations?",
     "options": [
-      "The master database",
       "Any slave database",
       "The cache tier",
-      "The load balancer"
+      "The load balancer",
+      "The master database"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "In the master–slave model, writes and updates go to the master while slaves primarily serve reads, as described in the replication section on page 8."
   },
   {
@@ -96,12 +96,12 @@
     "type": "mcq_single",
     "question": "What is a cache in the context of this chapter?",
     "options": [
+      "A tool for collecting metrics and logs",
       "An in-memory store that keeps frequently accessed or expensive data for faster reads",
-      "A backup copy of the database stored on disk",
       "A system for routing traffic between data centers",
-      "A tool for collecting metrics and logs"
+      "A backup copy of the database stored on disk"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The cache tier is defined as a fast, temporary store that holds frequently accessed or expensive data so subsequent requests can be served quickly, as explained on page 11."
   },
   {
@@ -111,12 +111,12 @@
     "type": "mcq_single",
     "question": "Which type of content is typically served from a CDN in this chapter?",
     "options": [
-      "Static assets like images, CSS, and JavaScript",
-      "Write-heavy transactional data",
       "User session state",
-      "Database logs"
+      "Database logs",
+      "Static assets like images, CSS, and JavaScript",
+      "Write-heavy transactional data"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The CDN is introduced as a geographically distributed network that caches and serves static assets such as images, CSS, and JavaScript files, as shown on page 13."
   },
   {
@@ -126,12 +126,12 @@
     "type": "mcq_single",
     "question": "What is a key difference between a stateful and a stateless web server according to the chapter?",
     "options": [
-      "A stateful server stores client session data locally, while a stateless server does not keep such state",
       "A stateful server cannot use a database, while a stateless server can",
+      "A stateless server must always reside in the same data center as the client",
       "A stateful server always runs faster than a stateless one",
-      "A stateless server must always reside in the same data center as the client"
+      "A stateful server stores client session data locally, while a stateless server does not keep such state"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "The chapter contrasts stateful servers that keep per-user session data on the server with stateless servers that keep no such state, instead using shared storage, as illustrated on pages 16–17."
   },
   {
@@ -141,12 +141,12 @@
     "type": "mcq_single",
     "question": "What is the main role of a message queue in the system?",
     "options": [
-      "Support asynchronous communication and decouple producers from consumers",
       "Provide DNS resolution for domain names",
-      "Store static files across regions",
-      "Replace the need for a cache tier"
+      "Support asynchronous communication and decouple producers from consumers",
+      "Replace the need for a cache tier",
+      "Store static files across regions"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The message queue acts as a durable buffer that allows producers to publish messages and consumers to process them asynchronously, decoupling the two sides, as described on page 21."
   },
   {
@@ -156,12 +156,12 @@
     "type": "mcq_single",
     "question": "Why is vertical scaling alone not sufficient for large-scale systems?",
     "options": [
-      "A single machine has hardware limits and remains a single point of failure",
-      "Vertical scaling does not support relational databases",
       "Vertical scaling requires a CDN to be effective",
-      "It prevents the use of load balancers for web traffic"
+      "It prevents the use of load balancers for web traffic",
+      "A single machine has hardware limits and remains a single point of failure",
+      "Vertical scaling does not support relational databases"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The chapter notes that scaling up one server eventually hits CPU and memory limits and still leaves you with no redundancy if that machine fails, which makes vertical scaling insufficient for large systems as discussed on page 5."
   },
   {
@@ -171,12 +171,12 @@
     "type": "mcq_single",
     "question": "Which performance advantage does master–slave database replication provide?",
     "options": [
-      "Reads can be spread across slave databases while writes go to the master",
-      "Writes can be distributed evenly across all slaves",
       "All queries now avoid disk access entirely",
-      "It removes the need for caching"
+      "It removes the need for caching",
+      "Writes can be distributed evenly across all slaves",
+      "Reads can be spread across slave databases while writes go to the master"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Replication allows read-heavy workloads to be split across multiple slave nodes, while write operations remain centralized on the master, improving throughput for common patterns as described on page 8."
   },
   {
@@ -186,12 +186,12 @@
     "type": "mcq_single",
     "question": "In which situation is it most beneficial to introduce a cache tier according to the chapter?",
     "options": [
-      "When data is read frequently but updated relatively infrequently",
       "When the application performs almost only writes",
-      "When the system has very small amounts of data",
-      "When all data is already stored in a CDN"
+      "When data is read frequently but updated relatively infrequently",
+      "When all data is already stored in a CDN",
+      "When the system has very small amounts of data"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The cache is recommended for data that experiences many reads and comparatively few writes, so that repeated database queries can be avoided, as discussed under cache considerations on page 11."
   },
   {
@@ -201,12 +201,12 @@
     "type": "mcq_single",
     "question": "What is one major risk of using a single cache server, and how does the chapter suggest mitigating it?",
     "options": [
-      "It becomes a single point of failure; use multiple cache servers across data centers",
-      "It cannot store objects larger than 1 MB; compress all data before caching",
       "It cannot support TTL; disable expiration entirely",
-      "It forces all reads to bypass the database; switch to vertical scaling"
+      "It forces all reads to bypass the database; switch to vertical scaling",
+      "It becomes a single point of failure; use multiple cache servers across data centers",
+      "It cannot store objects larger than 1 MB; compress all data before caching"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "A lone cache node is a single point of failure that can bring the system down if it crashes, so the chapter recommends deploying multiple cache servers and overprovisioning memory as mitigation, as noted on page 12."
   },
   {
@@ -216,12 +216,12 @@
     "type": "mcq_single",
     "question": "What does the TTL (Time-to-Live) value associated with CDN content control?",
     "options": [
-      "How long the CDN keeps a cached copy before re-fetching from the origin",
-      "The maximum number of users that can access the CDN per second",
+      "The number of cache servers allowed in a region",
       "The latency between DNS resolution and first byte",
-      "The number of cache servers allowed in a region"
+      "The maximum number of users that can access the CDN per second",
+      "How long the CDN keeps a cached copy before re-fetching from the origin"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "TTL defines the lifetime of a cached object on the CDN; if set too long the asset may become stale, and if too short it forces frequent reloads from the origin, as discussed on pages 13–14."
   },
   {
@@ -231,12 +231,12 @@
     "type": "mcq_single",
     "question": "Why does moving session data to a shared persistent store make it easier to horizontally scale the web tier?",
     "options": [
-      "Any web server can handle any user request because state is no longer tied to a particular machine",
-      "It eliminates the need to use a load balancer",
+      "It ensures that every server always has the same CPU utilization",
       "It allows the database tier to be removed",
-      "It ensures that every server always has the same CPU utilization"
+      "Any web server can handle any user request because state is no longer tied to a particular machine",
+      "It eliminates the need to use a load balancer"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "By storing sessions in a shared database or key-value store, requests for a user no longer need to be pinned to a specific server, which enables adding and removing web servers transparently, as explained in the stateless web tier section on pages 16–18."
   },
   {
@@ -246,12 +246,12 @@
     "type": "mcq_single",
     "question": "What is the role of geoDNS in a multi–data center architecture?",
     "options": [
+      "Act as a backup for the primary DNS registrar",
       "Resolve a domain to different IPs based on the user's geographic location",
       "Encrypt traffic between data centers",
-      "Synchronize database writes between masters",
-      "Act as a backup for the primary DNS registrar"
+      "Synchronize database writes between masters"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The chapter describes geoDNS as a DNS service that routes users to the nearest data center by returning location-specific IP addresses, as shown in the multi–data center diagrams on page 19."
   },
   {
@@ -261,12 +261,12 @@
     "type": "mcq_single",
     "question": "How does the message queue help handle a burst of expensive photo-processing jobs in the example?",
     "options": [
-      "By buffering jobs so that workers can scale up or down independently of web traffic",
-      "By automatically sharding the database by user ID",
+      "By routing HTTP requests around failed web servers",
       "By storing the processed images permanently",
-      "By routing HTTP requests around failed web servers"
+      "By automatically sharding the database by user ID",
+      "By buffering jobs so that workers can scale up or down independently of web traffic"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "In the photo customization example, web servers enqueue jobs and workers consume them asynchronously, allowing the number of workers to be adjusted based on queue length, as described on page 21."
   },
   {
@@ -276,12 +276,12 @@
     "type": "mcq_single",
     "question": "Which of the following is an example of an aggregated metric mentioned in the chapter?",
     "options": [
-      "Overall performance of the entire cache tier",
-      "The color theme chosen by each user",
       "The IP address of each incoming request",
-      "The HTML size of every page"
+      "Overall performance of the entire cache tier",
+      "The HTML size of every page",
+      "The color theme chosen by each user"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The metrics section suggests tracking host-level, aggregated, and business metrics; one example of an aggregated metric is the performance of the cache tier as a whole, which appears on page 22."
   },
   {
@@ -291,12 +291,12 @@
     "type": "mcq_single",
     "question": "Which statement best summarizes the difference between vertical and horizontal database scaling in this chapter?",
     "options": [
-      "Vertical scaling adds resources to one powerful DB server, while horizontal scaling splits data across multiple servers (sharding)",
+      "Vertical scaling uses message queues, while horizontal scaling uses CDNs",
       "Vertical scaling replicates data to multiple slaves, while horizontal scaling keeps a single master",
-      "Vertical scaling only works with NoSQL, while horizontal scaling only works with SQL",
-      "Vertical scaling uses message queues, while horizontal scaling uses CDNs"
+      "Vertical scaling adds resources to one powerful DB server, while horizontal scaling splits data across multiple servers (sharding)",
+      "Vertical scaling only works with NoSQL, while horizontal scaling only works with SQL"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The database scaling section contrasts scaling up a single machine with adding more servers and partitioning data into shards, as shown in the comparison and examples on pages 24–25."
   },
   {
@@ -306,12 +306,12 @@
     "type": "mcq_single",
     "question": "In the master–slave replication setup with multiple slaves, what is the recommended behavior if one slave database fails?",
     "options": [
-      "Route read traffic to remaining healthy slaves or temporarily to the master and replace the failed slave",
       "Immediately promote the failed slave to a new master",
-      "Stop all read and write operations until the slave recovers",
-      "Disable replication and switch to a single database server"
+      "Route read traffic to remaining healthy slaves or temporarily to the master and replace the failed slave",
+      "Disable replication and switch to a single database server",
+      "Stop all read and write operations until the slave recovers"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The chapter explains that if a slave fails, reads can be directed to other slaves or even the master until a replacement slave is brought online, as described in the failover discussion on page 9."
   },
   {
@@ -321,12 +321,12 @@
     "type": "mcq_single",
     "question": "According to the chapter, which scenario is a strong candidate for choosing a NoSQL database over a traditional relational database?",
     "options": [
-      "When data is largely unstructured and you only need to serialize and deserialize documents like JSON",
       "When you need complex joins across many normalized tables",
       "When you must strictly follow ACID transactions for all operations",
+      "When data is largely unstructured and you only need to serialize and deserialize documents like JSON",
       "When you expect only a few megabytes of data and low traffic"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The database section notes that NoSQL options fit cases with unstructured data, document-style storage, very low latency needs, or massive scale, whereas relational databases are better for structured data with joins, as covered on page 4."
   },
   {
@@ -336,12 +336,12 @@
     "type": "mcq_single",
     "question": "What trade-off must you consider when setting cache expiration (TTL) for cached data in the cache tier?",
     "options": [
-      "Short TTL reduces staleness but may cause frequent database hits; long TTL reduces DB load but risks serving outdated data",
-      "Short TTL guarantees perfect consistency; long TTL guarantees perfect availability",
+      "TTL only matters for write-heavy workloads, not for read-heavy workloads",
       "Short TTL improves write throughput; long TTL improves security",
-      "TTL only matters for write-heavy workloads, not for read-heavy workloads"
+      "Short TTL guarantees perfect consistency; long TTL guarantees perfect availability",
+      "Short TTL reduces staleness but may cause frequent database hits; long TTL reduces DB load but risks serving outdated data"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "The cache considerations emphasize choosing an expiration policy that balances freshness against extra load on the database, pointing out the downsides of TTL values that are too short or too long on page 11."
   },
   {
@@ -351,12 +351,12 @@
     "type": "mcq_single",
     "question": "If a static file such as image.png is updated and you need the CDN to serve the new version quickly, which strategy from the chapter is appropriate?",
     "options": [
+      "Increase the global TTL for all CDN objects",
       "Use object versioning in the URL, for example image.png?v=2",
-      "Lower the database isolation level",
       "Turn off CDN caching entirely",
-      "Increase the global TTL for all CDN objects"
+      "Lower the database isolation level"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "For early invalidation of cached CDN objects, the chapter suggests either using CDN APIs to invalidate or employing URL-based versioning like adding a version parameter, as described on page 14."
   },
   {
@@ -366,12 +366,12 @@
     "type": "mcq_single",
     "question": "How does adopting a stateless web tier affect the need for sticky sessions on the load balancer?",
     "options": [
-      "Sticky sessions are no longer required because any web server can handle any user request",
-      "Sticky sessions become mandatory for every client",
       "Sticky sessions must be applied only to mobile users",
+      "Sticky sessions become mandatory for every client",
+      "Sticky sessions are no longer required because any web server can handle any user request",
       "Sticky sessions are moved to the CDN instead of the load balancer"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "When session data is stored in shared storage rather than on individual servers, requests do not need to be bound to a specific machine, eliminating the reliance on sticky sessions mentioned in the stateful vs stateless discussion on pages 16–17."
   },
   {
@@ -381,12 +381,12 @@
     "type": "mcq_single",
     "question": "In a multi–data center setup, which challenge does asynchronous data replication specifically try to address?",
     "options": [
+      "Guaranteeing every read sees the absolute latest write across all regions synchronously",
       "Ensuring that when traffic fails over to another region, users can still access reasonably up-to-date data",
-      "Reducing DNS lookup time to zero",
       "Eliminating the need for message queues",
-      "Guaranteeing every read sees the absolute latest write across all regions synchronously"
+      "Reducing DNS lookup time to zero"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "The chapter points out that, during failover, traffic may hit a data center whose local database does not have needed data, and replicating data asynchronously across centers is a common solution, with Netflix's approach cited on page 20."
   },
   {
@@ -396,12 +396,12 @@
     "type": "mcq_single",
     "question": "Which choice best illustrates a good sharding key for evenly distributing user records across database shards, according to the sharding example?",
     "options": [
-      "Using user_id with a modulo hash, such as user_id % number_of_shards",
-      "Using the user's country, where each country maps to one shard",
       "Using the current date so that all new users go to the same shard each day",
-      "Using a constant value so every row ends up on the same shard"
+      "Using a constant value so every row ends up on the same shard",
+      "Using the user's country, where each country maps to one shard",
+      "Using user_id with a modulo hash, such as user_id % number_of_shards"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "The sharding section shows user_id used with a modulus operation to map users to shards and notes that a good sharding key should spread data evenly, as illustrated in the user table diagrams on pages 25–26."
   },
   {
@@ -411,12 +411,12 @@
     "type": "mcq_single",
     "question": "What is the \"celebrity problem\" in sharded databases, and one mitigation mentioned in the chapter?",
     "options": [
-      "Some keys receive disproportionately high traffic (such as famous users), overloading a shard; one fix is allocating dedicated shards for those hot keys",
-      "A shard can only store a fixed number of rows; one fix is to disable writes",
       "Celebrities require stronger encryption; one fix is to store their data only in memory",
-      "Shards used by celebrities must be closer to CDNs; one fix is to move all shards into a single region"
+      "Shards used by celebrities must be closer to CDNs; one fix is to move all shards into a single region",
+      "Some keys receive disproportionately high traffic (such as famous users), overloading a shard; one fix is allocating dedicated shards for those hot keys",
+      "A shard can only store a fixed number of rows; one fix is to disable writes"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The chapter describes the hotspot or celebrity problem where certain keys cause one shard to receive far more traffic, and suggests giving such high-traffic entities their own shard, potentially with further partitions, on page 26."
   },
   {
@@ -426,12 +426,12 @@
     "type": "mcq_single",
     "question": "Why do join operations become more difficult after a database is sharded, and what common workaround is described?",
     "options": [
-      "Data is split across servers, so joins may need cross-shard queries; a common workaround is denormalizing data so queries can be satisfied from a single table",
       "Shards cannot store indexes, so joins are impossible; the workaround is to remove all foreign keys",
-      "Shards do not support SQL syntax; the workaround is to switch to a NoSQL store",
-      "Joins consume too much cache memory; the workaround is to disable caching"
+      "Data is split across servers, so joins may need cross-shard queries; a common workaround is denormalizing data so queries can be satisfied from a single table",
+      "Joins consume too much cache memory; the workaround is to disable caching",
+      "Shards do not support SQL syntax; the workaround is to switch to a NoSQL store"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Once data is partitioned across shards, performing joins that span multiple shards is complex, so the chapter recommends denormalizing tables to satisfy queries locally on a single shard, as explained on page 26."
   },
   {
@@ -441,12 +441,12 @@
     "type": "mcq_single",
     "question": "Which of the following best summarizes the key strategies listed in the chapter for scaling a system to millions of users?",
     "options": [
-      "Keep the web tier stateless, build redundancy at every tier, cache aggressively, use multiple data centers and CDNs, shard the data tier, split services, and monitor and automate",
       "Rely solely on vertical scaling, use a single powerful database, and avoid caching to preserve consistency",
       "Use only one data center, rely on sticky sessions, and avoid message queues to keep the design simple",
+      "Keep the web tier stateless, build redundancy at every tier, cache aggressively, use multiple data centers and CDNs, shard the data tier, split services, and monitor and automate",
       "Store all state in application memory, remove redundancy to reduce costs, and disable logging and metrics"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "The concluding section summarizes lessons such as stateless web servers, redundancy, extensive caching, multi–data center and CDN usage, sharding, service decomposition, and strong monitoring and automation practices on page 28."
   }
 ]
