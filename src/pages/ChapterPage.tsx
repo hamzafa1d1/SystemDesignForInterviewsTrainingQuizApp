@@ -58,23 +58,29 @@ export function ChapterPage() {
                   {(quiz.currentQuestion?.options ?? []).map((option, index) => {
                     const isSelected = quiz.selectedIndex === index
                     const isCorrectOption = quiz.currentQuestion?.correctIndex === index
-                    const hasAnswered = quiz.hasAnsweredCurrent
+                    const isValidated = quiz.isValidated
 
                     let visualClass = 'border-white/10 bg-white/5 text-white/80 hover:border-mint/40'
-                    if (hasAnswered) {
-                      visualClass = isCorrectOption
-                        ? 'border-mint/80 bg-mint/10 text-mint'
-                        : 'border-rose-400/60 bg-rose-500/10 text-rose-200'
+                    if (isValidated) {
+                      if (isCorrectOption) {
+                        visualClass = 'border-mint/80 bg-mint/10 text-mint'
+                      } else if (isSelected) {
+                        // User's selected wrong answer - highlighted in red
+                        visualClass = 'border-rose-400/80 bg-rose-500/20 text-rose-100 ring-2 ring-rose-400/40'
+                      } else {
+                        // Other wrong answers - dimmed
+                        visualClass = 'border-white/5 bg-white/5 text-white/40 opacity-60'
+                      }
                     } else if (isSelected) {
                       visualClass = 'border-mint/60 bg-mint/10 text-mint'
                     }
 
-                    const animateProps = hasAnswered
+                    const animateProps = isValidated
                       ? isCorrectOption
                         ? { scale: [1, 1.05, 1], boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 24px rgba(185,245,216,0.35)', '0 0 0 rgba(0,0,0,0)'] }
                         : isSelected
                           ? { x: [0, -8, 8, -5, 5, 0] }
-                          : { opacity: 0.9 }
+                          : { opacity: 0.6 }
                       : { scale: 1 }
 
                     return (
@@ -84,39 +90,49 @@ export function ChapterPage() {
                         layout
                         onClick={() => quiz.selectOption(index)}
                         className={`w-full rounded-2xl border px-4 py-3 text-left text-sm transition ${visualClass} ${
-                          quiz.isComplete ? 'cursor-not-allowed opacity-70' : ''
+                          quiz.isComplete || quiz.isValidated ? 'cursor-not-allowed opacity-70' : ''
                         }`}
                         animate={animateProps}
-                        transition={{ duration: hasAnswered && isSelected && !isCorrectOption ? 0.5 : 0.4 }}
-                        disabled={quiz.isComplete}
+                        transition={{ duration: quiz.isValidated && isSelected && !isCorrectOption ? 0.5 : 0.4 }}
+                        disabled={quiz.isComplete || quiz.isValidated}
                       >
                         {option}
                       </motion.button>
                     )
                   })}
                 </div>
-                {quiz.hasAnsweredCurrent && quiz.currentQuestion && (
+                {quiz.isValidated && quiz.currentQuestion && (
                   <div className="rounded-2xl border border-mint/30 bg-mint/5 p-4 text-sm text-mint">
                     Explanation: {quiz.currentQuestion.explanation}
                   </div>
                 )}
                 <div className="flex flex-wrap gap-4 pt-2">
-                  {!quiz.isLastQuestion && (
+                  {!quiz.isValidated && (
+                    <button
+                      type="button"
+                      onClick={quiz.validateAnswer}
+                      className="rounded-full bg-mint/80 px-6 py-2 text-sm text-dusk disabled:cursor-not-allowed disabled:opacity-50"
+                      disabled={!quiz.hasAnsweredCurrent || quiz.isComplete}
+                    >
+                      Validate Answer
+                    </button>
+                  )}
+                  {quiz.isValidated && !quiz.isLastQuestion && (
                     <button
                       type="button"
                       onClick={quiz.goToNext}
                       className="rounded-full bg-white/15 px-6 py-2 text-sm text-white"
-                      disabled={!quiz.hasAnsweredCurrent || quiz.isComplete}
+                      disabled={quiz.isComplete}
                     >
                       Next question
                     </button>
                   )}
-                  {quiz.isLastQuestion && (
+                  {quiz.isValidated && quiz.isLastQuestion && (
                     <button
                       type="button"
                       onClick={quiz.finishQuiz}
                       className="rounded-full bg-mint/80 px-6 py-2 text-sm text-dusk"
-                      disabled={!quiz.hasAnsweredCurrent || quiz.isComplete}
+                      disabled={quiz.isComplete}
                     >
                       Finish quiz
                     </button>

@@ -25,6 +25,7 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
   const totalQuestions = questions.length
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<(AnswerEntry | null)[]>(() => buildEmptyAnswerSheet(totalQuestions))
+  const [validated, setValidated] = useState<boolean[]>(() => Array(totalQuestions).fill(false))
   const [secondsElapsed, setSecondsElapsed] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
   const [scoreSummary, setScoreSummary] = useState<QuizResult | null>(null)
@@ -32,6 +33,7 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
   useEffect(() => {
     setCurrentIndex(0)
     setAnswers(buildEmptyAnswerSheet(totalQuestions))
+    setValidated(Array(totalQuestions).fill(false))
     setSecondsElapsed(0)
     setIsComplete(false)
     setScoreSummary(null)
@@ -61,7 +63,7 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
   const isLastQuestion = currentIndex === Math.max(totalQuestions - 1, 0)
 
   const selectOption = (optionIndex: number) => {
-    if (!currentQuestion || isComplete) {
+    if (!currentQuestion || isComplete || validated[currentIndex]) {
       return
     }
 
@@ -75,8 +77,20 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
     })
   }
 
+  const validateAnswer = () => {
+    if (!hasAnsweredCurrent || isComplete || validated[currentIndex]) {
+      return
+    }
+
+    setValidated((prev) => {
+      const draft = [...prev]
+      draft[currentIndex] = true
+      return draft
+    })
+  }
+
   const goToNext = () => {
-    if (!hasAnsweredCurrent || isComplete) {
+    if (!hasAnsweredCurrent || !validated[currentIndex] || isComplete) {
       return
     }
 
@@ -84,7 +98,7 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
   }
 
   const finishQuiz = () => {
-    if (!hasAnsweredCurrent || isComplete) {
+    if (!hasAnsweredCurrent || !validated[currentIndex] || isComplete) {
       return
     }
 
@@ -110,9 +124,11 @@ export function useChapterQuiz({ chapterId, chapterTitle, questions }: UseChapte
     currentIndex,
     selectedIndex: currentAnswer?.selectedIndex ?? null,
     hasAnsweredCurrent,
+    isValidated: validated[currentIndex],
     answeredCount,
     isLastQuestion,
     selectOption,
+    validateAnswer,
     goToNext,
     finishQuiz,
     isComplete,
