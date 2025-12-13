@@ -17,6 +17,16 @@ export function HomePage() {
   const chapters = useChaptersWithStats()
   const availableChapters = chapters.filter((chapter) => chapter.questionCount > 0)
 
+  const scrollToChapters = () => {
+    const chaptersSection = document.getElementById('chapters-section')
+    chaptersSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const scrollToReview = () => {
+    const reviewSection = document.getElementById('book-review-section')
+    reviewSection?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div className="space-y-12">
       <motion.section
@@ -36,11 +46,11 @@ export function HomePage() {
             Nothing automated yet—this is the intentional planning stage.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
-            <button type="button" className="rounded-full bg-mint/80 px-4 py-2 text-dusk">
+            <button type="button" onClick={scrollToChapters} className="rounded-full bg-mint/80 px-4 py-2 text-dusk transition hover:bg-mint">
               Browse chapters
             </button>
-            <button type="button" className="rounded-full border border-white/30 px-4 py-2 text-white/80">
-              Preview quiz flow
+            <button type="button" onClick={scrollToReview} className="rounded-full border border-white/30 px-4 py-2 text-white/80 transition hover:border-mint hover:text-mint">
+              Read Book Review
             </button>
           </div>
         </div>
@@ -93,7 +103,7 @@ export function HomePage() {
         ))}
       </section>
 
-      <section className="space-y-8">
+      <section id="chapters-section" className="space-y-8">
         <SectionHeader
           eyebrow="Chapters"
           title="Every topic gets its own quiz lane"
@@ -120,6 +130,7 @@ export function HomePage() {
       </section>
       
       <motion.section
+        id="book-review-section"
         className="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#04050d] via-[#0b1430] to-[#020203] p-1 text-white"
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
