@@ -1,0 +1,452 @@
+[
+  {
+    "id": "ch3_q01",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What is the main idea the chapter emphasizes about system design interviews?",
+    "options": [
+      "They test trivia knowledge about well-known systems",
+      "They expect you to design a real-world product exactly as it exists today",
+      "They simulate collaborative problem solving on an ambiguous problem",
+      "They are primarily about writing production-ready code"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter frames the interview as a simulation of real-life collaboration on an ambiguous problem, where the process matters more than a perfect final design (page 1)."
+  },
+  {
+    "id": "ch3_q02",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "According to the chapter, why shouldn’t you feel pressured to design a complete real-world system in an hour?",
+    "options": [
+      "Because interviewers already know your final architecture choice",
+      "Because no one expects a full real-world design; real systems are extremely complicated",
+      "Because system design interviews are only for junior roles",
+      "Because diagrams are not allowed in interviews"
+    ],
+    "correctIndex": 1,
+    "explanation": "It explicitly says real-world system design is extremely complicated and no one expects you to design the full real-world system in an hour (page 1)."
+  },
+  {
+    "id": "ch3_q03",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What does the chapter say is often more important than the final design itself?",
+    "options": [
+      "Using the newest technologies",
+      "The work you put into the design process",
+      "Choosing a specific database vendor",
+      "Including full database schemas for every table"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter states the final design is less important than the work you put into the design process (page 1)."
+  },
+  {
+    "id": "ch3_q04",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which ability is explicitly mentioned as essential and specifically looked for by many interviewers?",
+    "options": [
+      "Memorizing common architecture diagrams",
+      "Asking good questions",
+      "Implementing complex ranking algorithms",
+      "Writing SQL joins from memory"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter highlights that the ability to ask good questions is essential and many interviewers look for it (page 1)."
+  },
+  {
+    "id": "ch3_q05",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which is listed as a red flag the interviewer may look for?",
+    "options": [
+      "Using back-of-the-envelope estimation",
+      "Over-engineering and ignoring tradeoffs",
+      "Drawing box diagrams",
+      "Asking clarification questions"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter calls out over-engineering as a real disease and a red flag, along with other behaviors like stubbornness (page 1)."
+  },
+  {
+    "id": "ch3_q06",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "How many steps are in the framework presented for system design interviews?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter introduces a 4-step process for effective system design interviews (page 2)."
+  },
+  {
+    "id": "ch3_q07",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What is Step 1 in the chapter’s 4-step process?",
+    "options": [
+      "Design deep dive",
+      "Understand the problem and establish design scope",
+      "Wrap up and discuss bottlenecks",
+      "Propose detailed database schema and API endpoints"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 1 is explicitly named “Understand the problem and establish design scope” (page 2)."
+  },
+  {
+    "id": "ch3_q08",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What lesson does the story about “Jimmy” illustrate?",
+    "options": [
+      "Always answer as fast as possible to impress the interviewer",
+      "Always skip questions and jump directly to the final architecture",
+      "Don’t jump into a solution without understanding requirements and assumptions",
+      "Focus only on implementation details to show depth"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter uses Jimmy as an example of answering too quickly and warns not to jump in without clarifying requirements and assumptions (page 2)."
+  },
+  {
+    "id": "ch3_q09",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "When the interviewer asks you to make assumptions instead of answering directly, what does the chapter advise you to do?",
+    "options": [
+      "Keep the assumptions in your head to save time",
+      "Write down your assumptions on the whiteboard or paper",
+      "Avoid assumptions and refuse to continue",
+      "Immediately move to Step 3 (deep dive)"
+    ],
+    "correctIndex": 1,
+    "explanation": "It recommends writing assumptions down because you might need them later (page 2)."
+  },
+  {
+    "id": "ch3_q10",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which is NOT one of the example clarification questions suggested in Step 1?",
+    "options": [
+      "What specific features are we going to build?",
+      "How many users does the product have?",
+      "What is the company’s technology stack and what can we leverage?",
+      "Which programming language is fastest for this system?"
+    ],
+    "correctIndex": 3,
+    "explanation": "Step 1 suggests clarifying features, users, growth expectations, and existing stack/services—not picking the “fastest language” (page 2)."
+  },
+  {
+    "id": "ch3_q11",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the news feed example conversation, what platforms does the interviewer say the product supports?",
+    "options": [
+      "Mobile only",
+      "Web only",
+      "Both mobile and web",
+      "Desktop application only"
+    ],
+    "correctIndex": 2,
+    "explanation": "In the example, the interviewer answers “Both” when asked whether it’s mobile or web (page 3)."
+  },
+  {
+    "id": "ch3_q12",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the news feed example, what feed ordering does the interviewer choose to keep things simple?",
+    "options": [
+      "Ranked by a complex weighting algorithm",
+      "Random order",
+      "Reverse chronological order",
+      "Alphabetical by author name"
+    ],
+    "correctIndex": 2,
+    "explanation": "The interviewer chooses reverse chronological order to simplify the requirements (page 3)."
+  },
+  {
+    "id": "ch3_q13",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the news feed example, what is the maximum number of friends a user can have?",
+    "options": [
+      "500",
+      "5000",
+      "50,000",
+      "1,000,000"
+    ],
+    "correctIndex": 1,
+    "explanation": "The example specifies 5000 friends (page 3)."
+  },
+  {
+    "id": "ch3_q14",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the news feed example, what traffic volume is stated?",
+    "options": [
+      "1 million daily active users (DAU)",
+      "10 million daily active users (DAU)",
+      "100 million daily active users (DAU)",
+      "300 million monthly active users (MAU)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The interviewer states 10 million DAU (page 3)."
+  },
+  {
+    "id": "ch3_q15",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In Step 2 (high-level design), which action is explicitly recommended?",
+    "options": [
+      "Start with a complete low-level schema before drawing any diagram",
+      "Treat the interviewer as a teammate and ask for feedback on your blueprint",
+      "Avoid box diagrams to save time",
+      "Skip use cases and focus only on theoretical tradeoffs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 2 recommends collaborating, proposing an initial blueprint, and asking for feedback (page 3)."
+  },
+  {
+    "id": "ch3_q16",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which set best matches the example “key components” you might include in Step 2 box diagrams?",
+    "options": [
+      "Only CPU, RAM, and disk",
+      "Clients, APIs, web servers, data stores, cache, CDN, message queue",
+      "Only database tables and indexes",
+      "Only network routers and switches"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 2 lists typical components such as clients, APIs, web servers, data stores, cache, CDN, and message queue (page 3)."
+  },
+  {
+    "id": "ch3_q17",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "According to Step 2, why might you walk through concrete use cases early?",
+    "options": [
+      "To avoid discussing tradeoffs",
+      "To help frame the high-level design and discover edge cases",
+      "To force a single correct solution",
+      "To replace the need for clarifying requirements"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter suggests using concrete use cases to frame the design and uncover edge cases (page 3)."
+  },
+  {
+    "id": "ch3_q18",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "When should you include API endpoints and database schema in the discussion, according to the chapter?",
+    "options": [
+      "Always, regardless of problem type",
+      "Never, because it is always too low-level",
+      "It depends on the problem; it may be too low-level for very large systems but fair for some backends",
+      "Only after the interviewer ends the session"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter says it depends: too low-level for very large problems (e.g., “Design Google search”), but fair for some problems (e.g., multiplayer poker backend) (page 3)."
+  },
+  {
+    "id": "ch3_q19",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the high-level news feed design, what are the two major flows identified?",
+    "options": [
+      "Authentication and authorization",
+      "Feed publishing and news feed building",
+      "Sharding and replication",
+      "Caching and CDN delivery"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter splits news feed design into feed publishing and news feed building at a high level (page 3–4)."
+  },
+  {
+    "id": "ch3_q20",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is the goal of Step 2 in the 4-step process?",
+    "options": [
+      "Finalize all implementation details",
+      "Develop a high-level design and get agreement (buy-in) from the interviewer",
+      "Do only traffic estimation and skip architecture",
+      "Write unit tests for core modules"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 2 focuses on proposing a high-level design and reaching agreement with the interviewer (page 3)."
+  },
+  {
+    "id": "ch3_q21",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which of the following is listed as an objective you should have achieved before starting Step 3 (deep dive)?",
+    "options": [
+      "Complete database schema, API list, and deployment scripts",
+      "Agreement on goals/scope, a high-level blueprint, and feedback on it",
+      "A fully working prototype",
+      "A final cost estimate and vendor selection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Before Step 3, the chapter lists objectives like agreeing on scope, sketching a blueprint, and obtaining interviewer feedback (page 5)."
+  },
+  {
+    "id": "ch3_q22",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What does the chapter recommend you do with the interviewer in Step 3 regarding system components?",
+    "options": [
+      "Design every component with equal depth regardless of importance",
+      "Identify and prioritize which components to dive into",
+      "Skip deep dive entirely and restate requirements",
+      "Only discuss UI flows and ignore backend constraints"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 3 emphasizes working with the interviewer to identify and prioritize components for deeper discussion (page 5)."
+  },
+  {
+    "id": "ch3_q23",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which deep-dive topic is used as an example for a URL shortener design?",
+    "options": [
+      "Choosing a CDN provider",
+      "Designing a hash function that converts a long URL to a short one",
+      "Designing a relational schema for comments",
+      "Implementing a ranking model for search results"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter calls out hash function design as an interesting deep-dive for a URL shortener (page 5)."
+  },
+  {
+    "id": "ch3_q24",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which pair of deep-dive topics is mentioned for a chat system?",
+    "options": [
+      "Sharding keys and celebrity problem",
+      "Reducing latency and supporting online/offline status",
+      "Building a mobile UI and choosing a color palette",
+      "Designing DNS routing and anycast"
+    ],
+    "correctIndex": 1,
+    "explanation": "For chat systems, the chapter mentions reducing latency and supporting online/offline presence as interesting topics (page 5)."
+  },
+  {
+    "id": "ch3_q25",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Why does the chapter say going into detailed discussion of Facebook’s EdgeRank algorithm is not ideal in an interview?",
+    "options": [
+      "Because it is proprietary and illegal to discuss",
+      "Because it wastes time and doesn’t prove scalable system design ability",
+      "Because it is required knowledge and should be memorized instead",
+      "Because it replaces the need for back-of-the-envelope estimation"
+    ],
+    "correctIndex": 1,
+    "explanation": "It’s presented as an example of unnecessary detail that consumes precious time and doesn’t demonstrate scalable system design skills (page 6)."
+  },
+  {
+    "id": "ch3_q26",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is Step 4 in the chapter’s process?",
+    "options": [
+      "Propose high-level design and get buy-in",
+      "Wrap up",
+      "Design deep dive",
+      "Write down assumptions"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 4 is labeled “Wrap up” (page 8)."
+  },
+  {
+    "id": "ch3_q27",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which advice is explicitly stated for Step 4 (wrap up)?",
+    "options": [
+      "Say your design is perfect to show confidence",
+      "Never discuss failure scenarios because they are out of scope",
+      "Identify bottlenecks and discuss potential improvements",
+      "Avoid recapping because the interviewer remembers everything"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter says you can discuss bottlenecks and improvements, and you should never claim the design is perfect (page 8)."
+  },
+  {
+    "id": "ch3_q28",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which of the following is listed as a useful wrap-up discussion direction?",
+    "options": [
+      "Only talk about UI/UX refinements",
+      "Error cases like server failure or network loss",
+      "Avoid operations, metrics, and logs entirely",
+      "Ignore future scale concerns"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wrap-up suggestions include discussing error cases such as server failure and network loss (page 8)."
+  },
+  {
+    "id": "ch3_q29",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which item is included in the chapter’s “Dos” list?",
+    "options": [
+      "Don’t jump into a solution without clarifying requirements",
+      "Always ask for clarification and understand the requirements",
+      "Don’t think in silence",
+      "Don’t go into too much detail early"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Dos list includes always asking for clarification and understanding requirements (page 9)."
+  },
+  {
+    "id": "ch3_q30",
+    "chapter": "chapter_3_framework_for_system_design_interviews",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "In the rough time allocation for a 45-minute system design interview, what is the recommended range for Step 3 (design deep dive)?",
+    "options": [
+      "3–10 minutes",
+      "10–15 minutes",
+      "10–25 minutes",
+      "3–5 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "The chapter’s rough guide suggests spending about 10–25 minutes on Step 3 in a 45-minute interview (page 9)."
+  }
+]

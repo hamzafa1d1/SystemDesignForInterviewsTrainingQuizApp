@@ -25,7 +25,6 @@ export function ChapterPage() {
     <div className="space-y-8">
       <PageShell
         title={chapterMeta?.title ?? 'Chapter preview'}
-        description="Counter, question body, answer states, and explanations will plug into this shell. Data now comes from the JSON bank to make layering logic easier later."
       >
         {hasQuestions ? (
           <div className="grid gap-8 md:grid-cols-[0.7fr_0.3fr]">
