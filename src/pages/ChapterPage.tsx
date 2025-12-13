@@ -48,7 +48,7 @@ export function ChapterPage() {
               >
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-[0.4em] text-white/40">
-                    {quiz.currentQuestion?.difficulty ?? 'preview'} · JSON sourced
+                    {quiz.currentQuestion?.difficulty ?? 'preview'}
                   </p>
                   <p className="text-lg text-foam">
                     {quiz.currentQuestion?.question ?? 'Question placeholder'}
