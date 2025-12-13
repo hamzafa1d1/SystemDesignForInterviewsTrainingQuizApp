@@ -2,13 +2,14 @@ import { motion } from 'framer-motion'
 import { PageShell } from '../components/PageShell'
 import { ProgressBar } from '../components/ProgressBar'
 import { chapterQuestionBank, chapters } from '../data/content'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useChapterQuiz } from '../hooks/useChapterQuiz'
 
 const fallbackChapterId = chapters[0]?.id ?? 'chapter_1_scale_from_zero_to_millions'
 
 export function ChapterPage() {
   const { chapterId } = useParams<{ chapterId?: string }>()
+  const navigate = useNavigate()
   const resolvedChapterId = chapterId && chapterQuestionBank[chapterId] ? chapterId : fallbackChapterId
   const questions = chapterQuestionBank[resolvedChapterId] ?? []
   const chapterMeta = chapters.find((chapter) => chapter.id === resolvedChapterId)
@@ -20,6 +21,146 @@ export function ChapterPage() {
   })
 
   const hasQuestions = quiz.totalQuestions > 0
+
+  // Show results screen when quiz is complete
+  if (quiz.isComplete && quiz.scoreSummary) {
+    return (
+      <div className="space-y-8">
+        <PageShell title={chapterMeta?.title ?? 'Chapter preview'}>
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            {/* Celebration Header */}
+            <motion.div
+              className="text-center space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <motion.div
+                className="text-6xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0],
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.3,
+                }}
+              >
+                🎉
+              </motion.div>
+              <h2 className="font-display text-4xl text-foam">Quiz Complete!</h2>
+              <p className="text-white/70">Great work on completing this chapter</p>
+            </motion.div>
+
+            {/* Score Card */}
+            <motion.div
+              className="glass-panel relative overflow-hidden p-8 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-mint/10 via-transparent to-foam/10" />
+              <div className="relative space-y-6">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-white/50">Your Score</p>
+                  <motion.p
+                    className="mt-2 font-display text-7xl text-mint"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      delay: 0.6,
+                      type: 'spring',
+                      stiffness: 200,
+                      damping: 10,
+                    }}
+                  >
+                    {quiz.scoreSummary.scorePercent}%
+                  </motion.p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.4 }}
+                  >
+                    <p className="text-3xl font-semibold text-foam">
+                      {quiz.scoreSummary.correctCount}
+                    </p>
+                    <p className="text-sm text-white/60 mt-1">Correct</p>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.4 }}
+                  >
+                    <p className="text-3xl font-semibold text-foam">
+                      {quiz.scoreSummary.totalQuestions - quiz.scoreSummary.correctCount}
+                    </p>
+                    <p className="text-sm text-white/60 mt-1">Wrong</p>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9, duration: 0.4 }}
+                  >
+                    <p className="text-3xl font-semibold text-foam">{quiz.timer.formatted}</p>
+                    <p className="text-sm text-white/60 mt-1">Time</p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Performance Message */}
+            <motion.div
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.4 }}
+            >
+              <p className="text-lg text-white/80">
+                {quiz.scoreSummary.scorePercent >= 90
+                  ? '🌟 Outstanding! You have mastered this chapter.'
+                  : quiz.scoreSummary.scorePercent >= 70
+                    ? '💪 Great job! You have a solid understanding of the concepts.'
+                    : quiz.scoreSummary.scorePercent >= 50
+                      ? '📚 Good effort! Review the material and try again to improve.'
+                      : '🔄 Keep practicing! Review the chapter and come back stronger.'}
+              </p>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.4 }}
+            >
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="rounded-full bg-mint/80 px-8 py-3 text-sm font-semibold text-dusk transition hover:bg-mint hover:scale-105"
+              >
+                Return to Home
+              </button>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white/80 transition hover:border-mint hover:text-mint hover:scale-105"
+              >
+                Retake Quiz
+              </button>
+            </motion.div>
+          </motion.div>
+        </PageShell>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-8">
@@ -147,20 +288,9 @@ export function ChapterPage() {
                   <p className="text-white/80">
                     Answered: {quiz.answeredCount} / {quiz.totalQuestions}
                   </p>
-                  <p>{quiz.isComplete ? 'Quiz completed' : 'Keep steady pacing.'}</p>
+                  <p>Keep steady pacing.</p>
                 </div>
               </div>
-              {quiz.isComplete && quiz.scoreSummary && (
-                <div className="rounded-2xl border border-mint/30 bg-mint/5 p-5 text-sm text-mint">
-                  <p className="text-xs uppercase tracking-[0.4em] text-mint/70">Results saved</p>
-                  <p className="mt-3 text-3xl font-semibold text-mint">
-                    {quiz.scoreSummary.scorePercent}%
-                  </p>
-                  <p className="text-white/70">
-                    {quiz.scoreSummary.correctCount} / {quiz.scoreSummary.totalQuestions} correct · {quiz.timer.formatted}
-                  </p>
-                </div>
-              )}
             </aside>
           </div>
         ) : (

@@ -9,6 +9,7 @@ const links = [
 
 export function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isHoveringSupport, setIsHoveringSupport] = useState(false)
 
   return (
     <nav className="layout-shell py-6">
@@ -59,17 +60,25 @@ export function NavigationBar() {
             href="https://buymeacoffee.com/hamzafaidi"
             target="_blank"
             rel="noreferrer"
-            className="group relative inline-flex items-center gap-1.5 sm:gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#FFDD00] to-[#FFC800] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-[#1a1a1a] shadow-[0_8px_30px_rgba(255,221,0,0.25)] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(255,221,0,0.4)] hover:scale-105"
+            onMouseEnter={() => setIsHoveringSupport(true)}
+            onMouseLeave={() => setIsHoveringSupport(false)}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#FFDD00] to-[#FFC800] px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-[#1a1a1a] shadow-[0_8px_30px_rgba(255,221,0,0.25)] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(255,221,0,0.4)] hover:scale-105 hover:px-5 sm:hover:px-6"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            <svg className="h-4 w-4 sm:h-5 sm:w-5 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="h-4 w-4 sm:h-5 sm:w-5 relative z-10 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
               <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
               <line x1="6" y1="1" x2="6" y2="4" />
               <line x1="10" y1="1" x2="10" y2="4" />
               <line x1="14" y1="1" x2="14" y2="4" />
             </svg>
-            <span className="relative z-10 hidden xs:inline">Support</span>
+            <span 
+              className={`relative z-10 whitespace-nowrap overflow-hidden transition-all duration-300 ${
+                isHoveringSupport ? 'max-w-[200px] opacity-100' : 'max-w-0 opacity-0'
+              }`}
+            >
+              Support The Project
+            </span>
           </a>
 
           {/* Mobile menu button */}
