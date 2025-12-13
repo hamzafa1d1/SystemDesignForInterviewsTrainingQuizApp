@@ -21,10 +21,10 @@ export function HomePage() {
   const availableChapters = chapters.filter((chapter) => chapter.questionCount > 0)
   const [showAllChapters, setShowAllChapters] = useState(false)
 
-  const displayedChapters = showAllChapters 
-    ? availableChapters 
+  const displayedChapters = showAllChapters
+    ? availableChapters
     : availableChapters.slice(0, INITIAL_CHAPTERS_COUNT)
-  
+
   const hasMoreChapters = availableChapters.length > INITIAL_CHAPTERS_COUNT
 
   const scrollToChapters = () => {
@@ -51,18 +51,31 @@ export function HomePage() {
           <h1 className="font-display text-4xl leading-tight text-foam sm:text-5xl">
             Master system design through bite-sized quizzes.
           </h1>
+
+          {/* ✅ Improved wording */}
           <p className="text-lg text-white/70">
-            Study one chapter at a time. Learn the patterns, understand the trade-offs, and quiz yourself until it clicks.
+            A quiz companion for <em>System Design Interview: An Insider’s Guide</em> (Alex Xu). Review key ideas
+            chapter by chapter, then test yourself until it sticks.
           </p>
+
           <div className="flex flex-wrap gap-3 text-sm">
-            <button type="button" onClick={scrollToChapters} className="rounded-full bg-mint/80 px-4 py-2 text-dusk transition hover:bg-mint">
+            <button
+              type="button"
+              onClick={scrollToChapters}
+              className="rounded-full bg-mint/80 px-4 py-2 text-dusk transition hover:bg-mint"
+            >
               Browse chapters
             </button>
-            <button type="button" onClick={scrollToReview} className="rounded-full border border-white/30 px-4 py-2 text-white/80 transition hover:border-mint hover:text-mint">
+            <button
+              type="button"
+              onClick={scrollToReview}
+              className="rounded-full border border-white/30 px-4 py-2 text-white/80 transition hover:border-mint hover:text-mint"
+            >
               Read Book Review
             </button>
           </div>
         </div>
+
         <motion.div
           className="relative overflow-hidden rounded-[36px] border border-white/5 bg-gradient-to-br from-[#05060e] via-[#070a16] to-[#020207] p-6 shadow-[0_35px_80px_rgba(5,6,14,0.8)]"
           initial={{ opacity: 0, y: 42, scale: 0.96 }}
@@ -124,8 +137,7 @@ export function HomePage() {
               <ChapterCard chapter={chapter} />
             </Link>
           ))}
-          
-          {/* View More / View Less Button */}
+
           {hasMoreChapters && (
             <motion.button
               type="button"
@@ -136,47 +148,32 @@ export function HomePage() {
               whileTap={{ scale: 0.98 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-mint/5 via-transparent to-foam/5 opacity-0 transition-opacity group-hover:opacity-100" />
-              
+
               <motion.div
                 className="relative rounded-full bg-mint/10 p-4 ring-2 ring-mint/20 transition-all group-hover:bg-mint/20 group-hover:ring-mint/40"
                 animate={showAllChapters ? { rotate: 180 } : { rotate: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <svg 
-                  className="h-8 w-8 text-mint transition-transform"
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M19 9l-7 7-7-7" 
-                  />
+                <svg className="h-8 w-8 text-mint transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </motion.div>
-              
+
               <div className="relative text-center">
                 <h3 className="font-display text-xl text-foam transition-colors group-hover:text-mint">
                   {showAllChapters ? 'Show Less' : `View ${availableChapters.length - INITIAL_CHAPTERS_COUNT} More Chapters`}
                 </h3>
                 <p className="mt-2 text-sm text-white/50">
-                  {showAllChapters 
-                    ? 'Collapse to see fewer chapters' 
-                    : `${availableChapters.length - INITIAL_CHAPTERS_COUNT} additional topics available`}
+                  {showAllChapters ? 'Collapse to see fewer chapters' : `${availableChapters.length - INITIAL_CHAPTERS_COUNT} additional topics available`}
                 </p>
               </div>
             </motion.button>
           )}
-          
-          {/* Coming Soon Card - only show when all chapters are visible */}
+
           {showAllChapters && (
             <article className="glass-panel flex flex-col gap-4 p-6 text-white/70">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
-                <span role="img" aria-label="sparkles">
-                  ✨
-                </span>
+                <span role="img" aria-label="sparkles">✨</span>
                 Coming soon
               </div>
               <h3 className="font-display text-2xl text-foam">More chapters coming soon</h3>
@@ -186,13 +183,13 @@ export function HomePage() {
           )}
         </div>
       </section>
-      
+
       <section id="book-review-section" className="space-y-6">
         <div className="space-y-2">
           <p className="text-xs uppercase tracking-[0.4em] text-white/50">Expert Review</p>
           <h2 className="font-display text-3xl text-foam">What the industry says</h2>
         </div>
-        
+
         <a
           href="https://blog.pragmaticengineer.com/system-design-interview-an-insiders-guide-review/"
           target="_blank"
@@ -206,7 +203,7 @@ export function HomePage() {
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-            
+
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <div className="flex items-center gap-2 mb-4">
                 <span className="rounded-full bg-mint/20 px-3 py-1 text-xs font-semibold text-mint backdrop-blur-sm">
@@ -215,19 +212,19 @@ export function HomePage() {
                 <span className="text-white/40">•</span>
                 <span className="text-sm text-white/80">Independent analysis</span>
               </div>
-              
+
               <h3 className="font-display text-3xl text-white mb-3 group-hover:text-foam transition-colors">
                 "A comprehensive guide to system design interviews"
               </h3>
             </div>
           </div>
-          
+
           <div className="p-8 space-y-4">
             <p className="text-white/70 leading-relaxed">
-              Gergely Orosz breaks down the book's strengths, covering everything from high-level architecture patterns 
+              Gergely Orosz breaks down the book's strengths, covering everything from high-level architecture patterns
               to practical interview strategies that actually work.
             </p>
-            
+
             <div className="flex items-center gap-2 text-mint font-semibold">
               <span>Read full review</span>
               <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -237,7 +234,6 @@ export function HomePage() {
           </div>
         </a>
       </section>
-
     </div>
   )
 }
