@@ -1,0 +1,452 @@
+[
+  {
+    "id": "ch2_q01",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In this chapter, what is the main purpose of doing a back-of-the-envelope estimation in a system design interview?",
+    "options": [
+      "To produce an exact performance benchmark for the final implementation",
+      "To get a quick, rough sense of whether a design can meet requirements using common numbers and assumptions",
+      "To replace the need for monitoring and load testing",
+      "To generate a complete architecture diagram with all components"
+    ],
+    "correctIndex": 1,
+    "explanation": "Back-of-the-envelope estimation is presented as a fast way to reason about whether designs meet requirements using thought experiments and common performance numbers (page 1)."
+  },
+  {
+    "id": "ch2_q02",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which set of topics does the chapter say you should understand well to perform back-of-the-envelope estimation effectively?",
+    "options": [
+      "Encryption, authentication, and authorization",
+      "Power of two, latency numbers, and availability numbers",
+      "CAP theorem, consensus, and leader election",
+      "Graph algorithms, dynamic programming, and bit manipulation"
+    ],
+    "correctIndex": 1,
+    "explanation": "The introduction lists power of two, latency numbers every programmer should know, and availability numbers as key concepts (page 1)."
+  },
+  {
+    "id": "ch2_q03",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "According to the chapter, a byte is best described as:",
+    "options": [
+      "A sequence of 4 bits",
+      "A sequence of 8 bits",
+      "A sequence of 16 bits",
+      "Exactly one ASCII word"
+    ],
+    "correctIndex": 1,
+    "explanation": "The power-of-two section defines a byte as a sequence of 8 bits (page 2)."
+  },
+  {
+    "id": "ch2_q04",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the power-of-two table, which power corresponds to roughly 1 Gigabyte (1 GB)?",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "40"
+    ],
+    "correctIndex": 2,
+    "explanation": "Table 2-1 maps power 30 to about 1 Billion, i.e., 1 Gigabyte (page 2)."
+  },
+  {
+    "id": "ch2_q05",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the latency table, which operation is listed as taking about 0.5 nanoseconds?",
+    "options": [
+      "L1 cache reference",
+      "Main memory reference",
+      "Disk seek",
+      "Round trip within the same datacenter"
+    ],
+    "correctIndex": 0,
+    "explanation": "Table 2-2 lists an L1 cache reference at about 0.5 ns (page 3)."
+  },
+  {
+    "id": "ch2_q06",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the notation used in the chapter, what does  “ms“ stand for?",
+    "options": [
+      "Microsecond",
+      "Millisecond",
+      "Minute-second",
+      "Megasecond"
+    ],
+    "correctIndex": 1,
+    "explanation": "The notes under Table 2-2 define ms as millisecond (page 3)."
+  },
+  {
+    "id": "ch2_q07",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "How does the chapter define high availability?",
+    "options": [
+      "The ability of a system to be continuously operational for a desirably long period of time",
+      "The ability to store data for at least 5 years",
+      "The ability to run only in multiple regions",
+      "The ability to guarantee zero latency for all requests"
+    ],
+    "correctIndex": 0,
+    "explanation": "High availability is defined as being continuously operational for a desirably long period (page 5)."
+  },
+  {
+    "id": "ch2_q08",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What is a Service Level Agreement (SLA) in the context of availability?",
+    "options": [
+      "A document that defines how data is sharded",
+      "An agreement that formally defines the uptime level a provider will deliver",
+      "A protocol for client-server communication",
+      "A metric for measuring cache hit ratio"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter describes an SLA as an agreement between provider and customer that defines the uptime level delivered (page 5)."
+  },
+  {
+    "id": "ch2_q09",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the Twitter estimation example, what monthly active users (MAU) value is assumed?",
+    "options": [
+      "30 million",
+      "150 million",
+      "300 million",
+      "3 billion"
+    ],
+    "correctIndex": 2,
+    "explanation": "The assumptions for the example list 300 million monthly active users (page 6)."
+  },
+  {
+    "id": "ch2_q10",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which tip does the chapter give to avoid ambiguity when writing numbers like  “5“ during estimation?",
+    "options": [
+      "Always convert everything to bytes",
+      "Label your units explicitly (e.g.,  “5 MB“)",
+      "Never write intermediate results",
+      "Use exact division instead of rounding"
+    ],
+    "correctIndex": 1,
+    "explanation": "The tips section recommends labeling units to prevent confusion (page 7)."
+  },
+  {
+    "id": "ch2_q11",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "According to the power-of-two table, power 20 corresponds most closely to:",
+    "options": [
+      "1 Kilobyte (1 KB)",
+      "1 Megabyte (1 MB)",
+      "1 Gigabyte (1 GB)",
+      "1 Terabyte (1 TB)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Table 2-1 maps power 20 to about 1 Million, i.e., 1 Megabyte (page 2)."
+  },
+  {
+    "id": "ch2_q12",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which item is listed as taking about 10 milliseconds in the latency table?",
+    "options": [
+      "Main memory reference",
+      "Compress 1 KB with Zippy",
+      "Disk seek",
+      "Read 1 MB sequentially from memory"
+    ],
+    "correctIndex": 2,
+    "explanation": "Table 2-2 shows disk seek at about 10,000,000 ns, i.e., 10 ms (page 3)."
+  },
+  {
+    "id": "ch2_q13",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Based on the latency numbers, which comparison is correct?",
+    "options": [
+      "A disk seek is faster than a round trip within the same datacenter",
+      "A round trip within the same datacenter is faster than a disk seek",
+      "They are roughly the same latency",
+      "Both are measured in nanoseconds"
+    ],
+    "correctIndex": 1,
+    "explanation": "The table lists round trip within the same datacenter at ~500 µs, while disk seek is ~10 ms, so the datacenter round trip is faster (page 3)."
+  },
+  {
+    "id": "ch2_q14",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which conclusion is explicitly stated after analyzing the latency visualization (Figure 2-1)?",
+    "options": [
+      "Disk is fast but memory is slow",
+      "Avoid disk seeks if possible",
+      "Compression is always slower than sending raw data",
+      "Network transfer between regions is instantaneous"
+    ],
+    "correctIndex": 1,
+    "explanation": "One of the listed conclusions is to avoid disk seeks if possible (page 4)."
+  },
+  {
+    "id": "ch2_q15",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "From the availability table, about how much downtime per year corresponds to 99.9% availability?",
+    "options": [
+      "3.65 days",
+      "8.77 hours",
+      "52.60 minutes",
+      "31.56 seconds"
+    ],
+    "correctIndex": 1,
+    "explanation": "Table 2-3 shows 99.9% availability corresponds to about 8.77 hours of downtime per year (page 5)."
+  },
+  {
+    "id": "ch2_q16",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What does the chapter mean by saying  “uptime is traditionally measured in nines“ ?",
+    "options": [
+      "Uptime is rounded to the nearest multiple of 9 seconds",
+      "Higher availability is expressed as more 9s in the percentage (e.g., 99.99%), and more 9s means less downtime",
+      "Only 99% and 100% matter in practice",
+      "Availability is calculated using base-9 logarithms"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter explains that the more nines (e.g., 99.9, 99.99, ...), the better, because it correlates with less downtime (page 5)."
+  },
+  {
+    "id": "ch2_q17",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Using the chapter's assumptions (300M MAU and 50% daily usage), what is the estimated Daily Active Users (DAU) for Twitter?",
+    "options": [
+      "50 million",
+      "100 million",
+      "150 million",
+      "300 million"
+    ],
+    "correctIndex": 2,
+    "explanation": "The example calculates DAU as 300 million × 50% = 150 million (page 6)."
+  },
+  {
+    "id": "ch2_q18",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the Twitter example, which calculation best matches the chapter's way to estimate tweets QPS?",
+    "options": [
+      "DAU × tweets per day ÷ (24 × 3600)",
+      "MAU ÷ tweets per day",
+      "Peak QPS ÷ 2",
+      "Tweets per day ÷ DAU"
+    ],
+    "correctIndex": 0,
+    "explanation": "The chapter computes tweets QPS by taking daily tweet volume and dividing by seconds per day (page 6)."
+  },
+  {
+    "id": "ch2_q19",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What peak tweets QPS does the chapter assume, given the average tweets QPS estimate?",
+    "options": [
+      "Peak QPS equals average QPS",
+      "Peak QPS is 2× the average QPS",
+      "Peak QPS is 10× the average QPS",
+      "Peak QPS is 0.5× the average QPS"
+    ],
+    "correctIndex": 1,
+    "explanation": "The example states peak QPS is approximated as 2 × QPS (page 6)."
+  },
+  {
+    "id": "ch2_q20",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the Twitter media-storage estimate, what is the approximate media storage needed per day under the given assumptions?",
+    "options": [
+      "3 TB per day",
+      "30 TB per day",
+      "300 TB per day",
+      "55 PB per day"
+    ],
+    "correctIndex": 1,
+    "explanation": "The example multiplies DAU, tweets/day, media percentage, and media size to estimate ~30 TB per day (page 6)."
+  },
+  {
+    "id": "ch2_q21",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "According to the availability table, approximately how much downtime per day corresponds to 99.99% availability?",
+    "options": [
+      "14.40 minutes",
+      "1.44 minutes",
+      "8.64 seconds",
+      "864.00 milliseconds"
+    ],
+    "correctIndex": 2,
+    "explanation": "Table 2-3 lists 99.99% availability as about 8.64 seconds of downtime per day (page 5)."
+  },
+  {
+    "id": "ch2_q22",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You want less than 1 minute of downtime per year. Based on the table in the chapter, which availability target is the smallest that meets this goal?",
+    "options": [
+      "99.99%",
+      "99.999%",
+      "99.9999%",
+      "99%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Table 2-3 shows 99.9999% corresponds to ~31.56 seconds of downtime per year, which is under 1 minute; 99.999% is ~5.26 minutes/year (page 5)."
+  },
+  {
+    "id": "ch2_q23",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Using the power-of-two mapping in the chapter (GB ~ 2^30, PB ~ 2^50), about how many GB are in 1 PB (order of magnitude)?",
+    "options": [
+      "1,000 GB",
+      "1,000,000 GB",
+      "1,000,000,000 GB",
+      "1,000,000,000,000 GB"
+    ],
+    "correctIndex": 1,
+    "explanation": "From Table 2-1, PB is 2^50 and GB is 2^30, so the ratio is 2^(50−30)=2^20≈1 million (page 2)."
+  },
+  {
+    "id": "ch2_q24",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A request path does one disk seek and one in-datacenter round trip. Based on the latency table, which component dominates the latency budget?",
+    "options": [
+      "The in-datacenter round trip",
+      "The disk seek",
+      "They contribute about equally",
+      "Neither matters because both are sub-nanosecond"
+    ],
+    "correctIndex": 1,
+    "explanation": "Disk seek is ~10 ms, while a round trip in the same datacenter is ~500 µs, so the disk seek dominates (page 3)."
+  },
+  {
+    "id": "ch2_q25",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "If we change the Twitter example so that 20% of tweets contain media and the average media size is 2 MB (keeping other assumptions the same), what is the approximate media storage needed per day?",
+    "options": [
+      "12 TB per day",
+      "30 TB per day",
+      "120 TB per day",
+      "240 TB per day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Using the same method as the example (DAU × tweets/day × media% × media size), the daily media becomes 150M × 2 × 20% × 2 MB = 120 TB/day (based on the estimation approach on page 6)."
+  },
+  {
+    "id": "ch2_q26",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Continuing the modified scenario (120 TB/day of media), about how much media storage is needed for 5 years (use 365 days/year and round)?",
+    "options": [
+      "~55 PB",
+      "~110 PB",
+      "~220 PB",
+      "~550 PB"
+    ],
+    "correctIndex": 2,
+    "explanation": "Following the chapter's 5-year calculation style, 120 TB × 365 × 5 ≈ 219,000 TB ≈ 219 PB, rounded to ~220 PB (based on the approach on page 6)."
+  },
+  {
+    "id": "ch2_q27",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "The tips section simplifies 99987 / 9.1 to 100,000 / 10. What is the approximate result after this simplification?",
+    "options": [
+      "~1,000",
+      "~10,000",
+      "~100,000",
+      "~1,000,000"
+    ],
+    "correctIndex": 1,
+    "explanation": "The rounded calculation 100,000 ÷ 10 equals 10,000, illustrating approximation during interviews (page 7)."
+  },
+  {
+    "id": "ch2_q28",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which behavior best matches the chapter's guidance on what interviewers are evaluating during back-of-the-envelope estimation?",
+    "options": [
+      "Showing a precise final number, even if it takes a long time",
+      "Demonstrating the estimation process clearly, including assumptions and approximations",
+      "Avoiding assumptions and using only real-world production metrics",
+      "Skipping units to keep the math simple"
+    ],
+    "correctIndex": 1,
+    "explanation": "The tips emphasize that the process and problem-solving are more important than precise results, and recommend writing down assumptions (page 7)."
+  },
+  {
+    "id": "ch2_q29",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "According to the latency table, which is slower?",
+    "options": [
+      "Reading 1 MB sequentially from disk (~30 ms)",
+      "Sending a packet CA → Netherlands → CA (~150 ms)",
+      "They are about the same",
+      "Both are under 1 ms"
+    ],
+    "correctIndex": 1,
+    "explanation": "Table 2-2 lists ~150 ms for the CA↔Netherlands packet round trip versus ~30 ms to read 1 MB sequentially from disk, so the cross-region packet is slower (page 3)."
+  },
+  {
+    "id": "ch2_q30",
+    "chapter": "chapter_2_back_of_the_envelope_estimation",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement is NOT supported by the conclusions drawn from the latency visualization (Figure 2-1)?",
+    "options": [
+      "Memory is fast but disk is slow",
+      "Compress data before sending it over the internet if possible",
+      "Avoid disk seeks if possible",
+      "Disk seeks are typically faster than main memory references"
+    ],
+    "correctIndex": 3,
+    "explanation": "The conclusions explicitly say memory is fast and disk is slow, recommend avoiding disk seeks, and suggest compression before sending data; they do not claim disk seeks are faster than memory references (page 4)."
+  }
+]
