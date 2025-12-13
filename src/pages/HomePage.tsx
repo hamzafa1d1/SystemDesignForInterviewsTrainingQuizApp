@@ -37,13 +37,12 @@ export function HomePage() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.4em] text-white/50">Interview companion</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-white/50">Ace Your Interview</p>
           <h1 className="font-display text-4xl leading-tight text-foam sm:text-5xl">
-            System design training that feels handcrafted for interviews.
+            Master system design through bite-sized quizzes.
           </h1>
           <p className="text-lg text-white/70">
-            Map each chapter, understand the trade-offs, then test yourself with focused quiz sprints.
-            Nothing automated yet—this is the intentional planning stage.
+            Study one chapter at a time. Learn the patterns, understand the trade-offs, and quiz yourself until it clicks.
           </p>
           <div className="flex flex-wrap gap-3 text-sm">
             <button type="button" onClick={scrollToChapters} className="rounded-full bg-mint/80 px-4 py-2 text-dusk transition hover:bg-mint">
@@ -106,8 +105,8 @@ export function HomePage() {
       <section id="chapters-section" className="space-y-8">
         <SectionHeader
           eyebrow="Chapters"
-          title="Every topic gets its own quiz lane"
-          description="Cards show the question load, estimated duration, and how you did last time."
+          title="Pick a topic and start quizzing"
+          description="Track your progress, time spent, and scores as you work through each chapter."
         />
         <div className="grid gap-6 md:grid-cols-2">
           {availableChapters.map((chapter) => (
@@ -122,81 +121,63 @@ export function HomePage() {
               </span>
               Coming soon
             </div>
-            <h3 className="font-display text-2xl text-foam">More chapters incoming</h3>
-            <p>We are storyboarding the next quiz lanes—service boundaries, data growth, and beyond.</p>
-            <p className="text-sm text-white/50">Expect more cards to unlock as soon as their question banks are ready.</p>
+            <h3 className="font-display text-2xl text-foam">More chapters coming soon</h3>
+            <p>Working on new topics like service boundaries, data modeling, and scaling patterns.</p>
+            <p className="text-sm text-white/50">New chapters will appear here as they're ready.</p>
           </article>
         </div>
       </section>
       
-      <motion.section
-        id="book-review-section"
-        className="glass-panel overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#04050d] via-[#0b1430] to-[#020203] p-1 text-white"
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        <motion.a
+      <section id="book-review-section" className="space-y-6">
+        <div className="space-y-2">
+          <p className="text-xs uppercase tracking-[0.4em] text-white/50">Expert Review</p>
+          <h2 className="font-display text-3xl text-foam">What the industry says</h2>
+        </div>
+        
+        <a
           href="https://blog.pragmaticengineer.com/system-design-interview-an-insiders-guide-review/"
           target="_blank"
           rel="noreferrer"
-          className="group relative grid overflow-hidden rounded-[32px] border border-white/10 bg-[#05060e]/70 text-left no-underline lg:grid-cols-[0.55fr_0.45fr]"
-          whileHover={{ scale: 1.01 }}
-          transition={{ type: 'spring', stiffness: 140, damping: 20 }}
+          className="glass-panel group block overflow-hidden no-underline transition-all hover:-translate-y-1"
         >
-          <div className="relative p-8">
-            <motion.div
-              className="pointer-events-none absolute inset-0 opacity-40 blur-3xl"
-              animate={{ opacity: [0.3, 0.55, 0.3], rotate: [0, 5, -3, 0] }}
-              transition={{ duration: 12, repeat: Infinity }}
-              style={{
-                background:
-                  'radial-gradient(circle at 15% 20%, rgba(151,255,219,0.4), transparent 55%), radial-gradient(circle at 80% 0%, rgba(115,182,255,0.35), transparent 60%), radial-gradient(circle at 50% 85%, rgba(255,173,220,0.25), transparent 70%)',
-              }}
-            />
-            <div className="relative z-10 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.35em] text-white/60">
-              <span className="rounded-full border border-white/20 px-3 py-1">Review signal</span>
-              <span className="rounded-full border border-white/20 px-3 py-1">Pragmatic Engineer</span>
-            </div>
-            <div className="relative z-10 mt-6 space-y-3">
-              <p className="text-sm text-white/70">Independent take on the book&apos;s impact</p>
-              <h2 className="font-display text-3xl text-foam">Peek inside the full write-up</h2>
-            </div>
-            <div className="relative z-10 mt-8 inline-flex items-center gap-3 rounded-full border border-mint/40 px-5 py-2 text-sm font-semibold text-mint/90">
-              <span>Open review</span>
-              <motion.span
-                className="text-xl"
-                animate={{ x: [0, 6, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                ↗
-              </motion.span>
-            </div>
-          </div>
-          <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-black via-[#040618] to-[#010103]">
-            <motion.div
-              className="pointer-events-none absolute inset-x-0 top-8 z-0 mx-auto h-32 w-2/3 rounded-full bg-mint/30 blur-[100px] opacity-40"
-              animate={{ opacity: [0.2, 0.45, 0.2], scale: [0.9, 1.05, 0.9] }}
-              transition={{ duration: 6, repeat: Infinity }}
-            />
-            <motion.img
+          <div className="relative h-64 overflow-hidden md:h-80">
+            <img
               src={reviewThumbnail}
-              alt="Pragmatic Engineer review thumbnail"
-              className="relative z-10 w-full object-cover"
-              initial={{ y: 4, rotateX: 3 }}
-              animate={{ y: [4, -2, 4], rotateX: [3, 0, 3], scale: [1, 1.005, 1] }}
-              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{ rotateY: -3, scale: 1.01 }}
+              alt="Pragmatic Engineer review"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <motion.div
-              className="pointer-events-none absolute inset-0 border border-white/10"
-              animate={{ opacity: [0.2, 0.5, 0.2] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="rounded-full bg-mint/20 px-3 py-1 text-xs font-semibold text-mint backdrop-blur-sm">
+                  Pragmatic Engineer
+                </span>
+                <span className="text-white/40">•</span>
+                <span className="text-sm text-white/80">Independent analysis</span>
+              </div>
+              
+              <h3 className="font-display text-3xl text-white mb-3 group-hover:text-foam transition-colors">
+                "A comprehensive guide to system design interviews"
+              </h3>
+            </div>
           </div>
-        </motion.a>
-      </motion.section>
+          
+          <div className="p-8 space-y-4">
+            <p className="text-white/70 leading-relaxed">
+              Gergely Orosz breaks down the book's strengths, covering everything from high-level architecture patterns 
+              to practical interview strategies that actually work.
+            </p>
+            
+            <div className="flex items-center gap-2 text-mint font-semibold">
+              <span>Read full review</span>
+              <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      </section>
 
     </div>
   )

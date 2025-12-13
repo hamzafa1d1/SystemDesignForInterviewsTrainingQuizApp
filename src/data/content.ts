@@ -19,6 +19,7 @@ export const chapters: Chapter[] = [
   },
 ]
 
+// should not be dummy data, should be calculated from the already given data 
 export const landingStats: QuizMetric[] = [
   { label: 'Chapters', value: '01', helper: 'More lanes unlock soon' },
   { label: 'Practice Sets', value: '30', helper: 'Chapter 1 questions' },
