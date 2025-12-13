@@ -43,18 +43,18 @@ export function AboutPage() {
           <div className="space-y-6 text-center lg:text-left">
             <div className="space-y-3">
               <div className="inline-block rounded-full border border-mint/30 bg-mint/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-mint">
-                Backend .NET Engineer
+                Software Engineer
               </div>
               <h1 className="font-display text-4xl font-bold text-white md:text-5xl">
                 Hamza Faidi
               </h1>
               <p className="text-lg text-white/70 md:text-xl">
-                Building secure fintech platforms on Azure & AWS
+                Building high scale software applications on Azure & AWS cloud providers.
               </p>
             </div>
 
             <p className="max-w-2xl text-base leading-relaxed text-white/60">
-              Backend .NET Engineer with 2+ years crafting fintech payment and expense platforms using ASP.NET Core, 
+              Software Engineer with 2+ years crafting fintech payment and expense platforms using ASP.NET Core, 
               Web API, EF Core, and SQL Server on Azure. Full-stack capable with Angular/React experience. 
               AWS Certified Solutions Architect Associate & Cloud Practitioner.
             </p>
@@ -88,8 +88,8 @@ export function AboutPage() {
 
             {/* Languages */}
             <div className="flex flex-wrap justify-center gap-2 pt-2 lg:justify-start">
-              <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/60">🇬🇧 English (C1)</span>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/60">🇫🇷 French (C1)</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/60">English (C1)</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/60">French (C1)</span>
             </div>
           </div>
         </div>

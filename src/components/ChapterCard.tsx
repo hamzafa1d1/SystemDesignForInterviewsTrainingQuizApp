@@ -6,8 +6,8 @@ interface ChapterCardProps {
 
 export function ChapterCard({ chapter }: ChapterCardProps) {
   return (
-    <article className="glass-panel flex flex-col gap-6 p-6 transition duration-300 hover:-translate-y-1">
-      <div className="space-y-1">
+    <article className="glass-panel flex h-full flex-col gap-6 p-6 transition duration-300 hover:-translate-y-1">
+      <div className="flex-grow space-y-1">
         <p className="text-xs uppercase tracking-[0.3em] text-mint/80">Chapter</p>
         <h3 className="font-display text-2xl text-foam">{chapter.title}</h3>
         <p className="text-white/70">{chapter.summary}</p>

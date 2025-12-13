@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { ChapterCard } from '../components/ChapterCard'
 import { MetricCard } from '../components/MetricCard'
 import { SectionHeader } from '../components/SectionHeader'
@@ -13,9 +14,18 @@ const heroVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
+const INITIAL_CHAPTERS_COUNT = 2
+
 export function HomePage() {
   const chapters = useChaptersWithStats()
   const availableChapters = chapters.filter((chapter) => chapter.questionCount > 0)
+  const [showAllChapters, setShowAllChapters] = useState(false)
+
+  const displayedChapters = showAllChapters 
+    ? availableChapters 
+    : availableChapters.slice(0, INITIAL_CHAPTERS_COUNT)
+  
+  const hasMoreChapters = availableChapters.length > INITIAL_CHAPTERS_COUNT
 
   const scrollToChapters = () => {
     const chaptersSection = document.getElementById('chapters-section')
@@ -109,22 +119,71 @@ export function HomePage() {
           description="Track your progress, time spent, and scores as you work through each chapter."
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {availableChapters.map((chapter) => (
+          {displayedChapters.map((chapter) => (
             <Link key={chapter.id} to={`/chapter/${chapter.id}`} className="no-underline">
               <ChapterCard chapter={chapter} />
             </Link>
           ))}
-          <article className="glass-panel flex flex-col gap-4 p-6 text-white/70">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
-              <span role="img" aria-label="sparkles">
-                ✨
-              </span>
-              Coming soon
-            </div>
-            <h3 className="font-display text-2xl text-foam">More chapters coming soon</h3>
-            <p>Working on new topics like service boundaries, data modeling, and scaling patterns.</p>
-            <p className="text-sm text-white/50">New chapters will appear here as they're ready.</p>
-          </article>
+          
+          {/* View More / View Less Button */}
+          {hasMoreChapters && (
+            <motion.button
+              type="button"
+              onClick={() => setShowAllChapters(!showAllChapters)}
+              className="glass-panel group relative flex flex-col items-center justify-center gap-4 overflow-hidden p-8 text-white/70 transition-all hover:border-mint/40"
+              initial={false}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-mint/5 via-transparent to-foam/5 opacity-0 transition-opacity group-hover:opacity-100" />
+              
+              <motion.div
+                className="relative rounded-full bg-mint/10 p-4 ring-2 ring-mint/20 transition-all group-hover:bg-mint/20 group-hover:ring-mint/40"
+                animate={showAllChapters ? { rotate: 180 } : { rotate: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <svg 
+                  className="h-8 w-8 text-mint transition-transform"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M19 9l-7 7-7-7" 
+                  />
+                </svg>
+              </motion.div>
+              
+              <div className="relative text-center">
+                <h3 className="font-display text-xl text-foam transition-colors group-hover:text-mint">
+                  {showAllChapters ? 'Show Less' : `View ${availableChapters.length - INITIAL_CHAPTERS_COUNT} More Chapters`}
+                </h3>
+                <p className="mt-2 text-sm text-white/50">
+                  {showAllChapters 
+                    ? 'Collapse to see fewer chapters' 
+                    : `${availableChapters.length - INITIAL_CHAPTERS_COUNT} additional topics available`}
+                </p>
+              </div>
+            </motion.button>
+          )}
+          
+          {/* Coming Soon Card - only show when all chapters are visible */}
+          {showAllChapters && (
+            <article className="glass-panel flex flex-col gap-4 p-6 text-white/70">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
+                <span role="img" aria-label="sparkles">
+                  ✨
+                </span>
+                Coming soon
+              </div>
+              <h3 className="font-display text-2xl text-foam">More chapters coming soon</h3>
+              <p>Working on new topics like service boundaries, data modeling, and scaling patterns.</p>
+              <p className="text-sm text-white/50">New chapters will appear here as they're ready.</p>
+            </article>
+          )}
         </div>
       </section>
       

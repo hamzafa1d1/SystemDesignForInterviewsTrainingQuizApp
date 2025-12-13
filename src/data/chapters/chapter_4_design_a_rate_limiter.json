@@ -1,0 +1,452 @@
+[
+  {
+    "id": "ch4_q01",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the HTTP context, what does a rate limiter primarily control?",
+    "options": [
+      "How many database replicas are created per region",
+      "The rate of traffic (number of requests) a client is allowed to send within a time period",
+      "How long DNS records are cached by resolvers",
+      "How many bytes each HTTP response can contain"
+    ],
+    "correctIndex": 1,
+    "explanation": "A rate limiter controls how many client requests are allowed over a specified period; excess calls are blocked (page 1)."
+  },
+  {
+    "id": "ch4_q02",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which is a key benefit of using an API rate limiter mentioned in the chapter?",
+    "options": [
+      "It guarantees exactly-once request delivery",
+      "It prevents resource starvation from DoS-style traffic by blocking excess calls",
+      "It removes the need for authentication",
+      "It automatically encrypts all traffic end-to-end"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rate limiting helps prevent resource starvation caused by DoS attacks by blocking excess requests (page 1)."
+  },
+  {
+    "id": "ch4_q03",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Why is client-side rate limiting generally considered unreliable for enforcement?",
+    "options": [
+      "Clients cannot send HTTP requests without DNS",
+      "Client requests can be forged by malicious actors and you might not control the client implementation",
+      "Client-side code cannot measure time accurately",
+      "Clients cannot maintain counters in memory"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter notes client-side enforcement is unreliable because requests can be forged and you may not control the client implementation (page 3)."
+  },
+  {
+    "id": "ch4_q04",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What HTTP status code is commonly returned when a client exceeds the rate limit?",
+    "options": [
+      "200",
+      "301",
+      "404",
+      "429"
+    ],
+    "correctIndex": 3,
+    "explanation": "The middleware throttles excess requests and returns HTTP 429, indicating too many requests (page 3)."
+  },
+  {
+    "id": "ch4_q05",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In microservice architectures, rate limiting is often implemented in which component?",
+    "options": [
+      "Database master node",
+      "API gateway",
+      "CDN edge cache",
+      "DNS registrar"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter explains rate limiting is usually implemented in an API gateway component in cloud microservices (page 4)."
+  },
+  {
+    "id": "ch4_q06",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In the token bucket algorithm, what happens when a request arrives and there are enough tokens?",
+    "options": [
+      "The request is dropped to keep traffic stable",
+      "One token is consumed and the request is allowed",
+      "Tokens are doubled to handle burst traffic",
+      "The bucket size is permanently increased"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each request consumes one token; if enough tokens exist, a token is taken and the request goes through (page 5)."
+  },
+  {
+    "id": "ch4_q07",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which two parameters define a token bucket rate limiter?",
+    "options": [
+      "Bucket size and refill rate",
+      "Queue length and retry delay",
+      "Window length and shard count",
+      "TTL and replication factor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Token bucket uses bucket size (capacity) and refill rate (tokens added per unit time) (page 7)."
+  },
+  {
+    "id": "ch4_q08",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What data store is recommended for counters instead of a traditional database, and why?",
+    "options": [
+      "A relational database, because disk access is fastest",
+      "An in-memory cache like Redis, because it’s fast and supports time-based expiration",
+      "A file on local disk, because it’s persistent",
+      "A message queue, because it stores counters durably"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter argues DB is too slow due to disk access; in-memory cache (e.g., Redis) is chosen for speed and expiration (page 12)."
+  },
+  {
+    "id": "ch4_q09",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which Redis commands are highlighted as useful for rate limiting counters?",
+    "options": [
+      "SELECT and JOIN",
+      "GET and SETNX",
+      "INCR and EXPIRE",
+      "PUBLISH and SUBSCRIBE"
+    ],
+    "correctIndex": 2,
+    "explanation": "Redis INCR increments a counter and EXPIRE sets a timeout so the counter is deleted after the window (page 12)."
+  },
+  {
+    "id": "ch4_q10",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which response header tells a client how long to wait before retrying after being throttled?",
+    "options": [
+      "X-Ratelimit-Limit",
+      "X-Ratelimit-Remaining",
+      "X-Ratelimit-Retry-After",
+      "X-Request-Id"
+    ],
+    "correctIndex": 2,
+    "explanation": "X-Ratelimit-Retry-After indicates how many seconds to wait until the client can make a request again without being throttled (page 14)."
+  },
+  {
+    "id": "ch4_q11",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which requirement is explicitly listed for the rate limiter to avoid harming user experience?",
+    "options": [
+      "Low latency so it does not slow down HTTP response time",
+      "Strong consistency across all regions for every request",
+      "Full-text search over request bodies",
+      "Exactly-once request processing"
+    ],
+    "correctIndex": 0,
+    "explanation": "Low latency is a stated requirement: the rate limiter should not slow down HTTP response time (page 2)."
+  },
+  {
+    "id": "ch4_q12",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Why can the fixed window counter algorithm allow too many requests in some cases?",
+    "options": [
+      "It never resets counters",
+      "Traffic bursts at the edges of adjacent windows can let more than the quota pass in a rolling window",
+      "It uses a FIFO queue which delays recent requests",
+      "It stores timestamps for every request"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fixed windows can be exploited at window boundaries: bursts at edges can exceed the effective quota in a rolling interval (page 9)."
+  },
+  {
+    "id": "ch4_q13",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which statement best describes the leaking bucket algorithm’s processing behavior?",
+    "options": [
+      "Requests are processed immediately as long as tokens exist",
+      "Requests are processed at a fixed rate using a FIFO queue; overflow requests are dropped",
+      "Requests are always accepted and processed later",
+      "Requests are accepted only if the current window is empty"
+    ],
+    "correctIndex": 1,
+    "explanation": "Leaky bucket uses a FIFO queue; requests are enqueued if there is room and processed at a regular fixed outflow rate, otherwise dropped (page 8)."
+  },
+  {
+    "id": "ch4_q14",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is the main downside of the sliding window log algorithm?",
+    "options": [
+      "It is inaccurate at window boundaries",
+      "It cannot support burst traffic",
+      "It consumes a lot of memory because timestamps may be stored even for rejected requests",
+      "It requires a database write for every request"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sliding window log is accurate but memory-heavy because it stores timestamps, potentially even for rejected requests (page 11)."
+  },
+  {
+    "id": "ch4_q15",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "The sliding window counter algorithm is described as a hybrid of which two approaches?",
+    "options": [
+      "Token bucket and leaking bucket",
+      "Fixed window counter and sliding window log",
+      "Leaking bucket and sliding window log",
+      "Token bucket and fixed window counter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sliding window counter combines fixed window counter with sliding window log concepts (page 11)."
+  },
+  {
+    "id": "ch4_q16",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In the chapter’s detailed design, where are rate-limiting rules typically stored and how are they used at runtime?",
+    "options": [
+      "Rules are stored in Redis and never cached elsewhere",
+      "Rules are stored on disk; workers pull them and cache them for the middleware to use",
+      "Rules are compiled into the client app and pushed with each request",
+      "Rules are generated dynamically from database schema"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rules are stored on disk, workers frequently pull them and store them in cache; middleware loads rules from cache to make decisions (page 15)."
+  },
+  {
+    "id": "ch4_q17",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "When a request is rate limited, which actions does the chapter mention as possible handling strategies?",
+    "options": [
+      "Always return 500 and restart the server",
+      "Always accept and silently ignore the limit",
+      "Return 429; optionally enqueue the request to be processed later depending on the use case",
+      "Redirect the request to another DNS name"
+    ],
+    "correctIndex": 2,
+    "explanation": "When rate limited, APIs return 429; in some cases rate-limited work can be queued for later processing (page 14)."
+  },
+  {
+    "id": "ch4_q18",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Why is using locks to avoid race conditions in a high-throughput distributed rate limiter usually discouraged?",
+    "options": [
+      "Locks cannot be implemented in Redis",
+      "Locks significantly slow down the system",
+      "Locks increase memory efficiency too much",
+      "Locks cause counters to never expire"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter notes locks are an obvious solution but will significantly slow down the system; alternatives include Lua scripts or Redis sorted sets (page 16)."
+  },
+  {
+    "id": "ch4_q19",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is the synchronization issue described when multiple rate limiter servers are used?",
+    "options": [
+      "Each rate limiter server sees all requests because HTTP is stateful",
+      "Clients might hit different rate limiter instances, so one instance may lack needed counters unless state is centralized",
+      "Redis cannot be accessed from multiple servers",
+      "Rate limiting rules cannot be updated without downtime"
+    ],
+    "correctIndex": 1,
+    "explanation": "With multiple rate limiter servers and stateless routing, clients can send requests to different instances; without synchronization/central state, counters are incomplete (page 17)."
+  },
+  {
+    "id": "ch4_q20",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is the preferred solution over sticky sessions for keeping rate limiter state consistent across servers?",
+    "options": [
+      "Force all clients to use the same IP address",
+      "Use sticky sessions permanently at the load balancer",
+      "Centralize counters in a shared data store like Redis",
+      "Increase the HTTP timeout for throttled requests"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sticky sessions are called not scalable/flexible; a better approach is centralized data stores like Redis (page 17)."
+  },
+  {
+    "id": "ch4_q21",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "In the sliding window counter example, if there are 5 requests in the previous minute and 3 in the current minute, and the overlap percentage is 70%, what rolling-window count does the chapter compute before rounding?",
+    "options": [
+      "3 + 5 * 0.7 = 6.5",
+      "3 + 5 * 0.3 = 4.5",
+      "5 + 3 * 0.7 = 7.1",
+      "5 + 3 * 0.3 = 5.9"
+    ],
+    "correctIndex": 0,
+    "explanation": "The chapter’s formula is: requests in current window + requests in previous window * overlap percentage; with 3 current and 5 previous at 70%, it becomes 3 + 5*0.7 = 6.5 before rounding (pages 11–12)."
+  },
+  {
+    "id": "ch4_q22",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement best captures the accuracy vs memory trade-off between sliding window log and sliding window counter?",
+    "options": [
+      "Sliding log is less accurate but more memory efficient than sliding counter",
+      "Sliding log is very accurate but memory heavy; sliding counter is more memory efficient but approximate",
+      "Both are equally accurate and equally memory efficient",
+      "Sliding counter is more accurate because it stores every timestamp"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sliding window log is described as very accurate but memory hungry; sliding window counter is more memory efficient but an approximation that assumes even distribution in the previous window (pages 11–12)."
+  },
+  {
+    "id": "ch4_q23",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "In a Redis-based design, what subtle issue causes a race condition when handling two concurrent requests?",
+    "options": [
+      "Redis counters cannot be incremented",
+      "Both requests can read the same counter value before either writes back, leading to an undercount",
+      "EXPIRE resets the counter too early",
+      "Redis can store only one key per user"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter shows both requests might read counter=3, each decides counter+1 is ok, and both write back 4, while the correct value should be 5—an undercount caused by concurrent reads/writes (page 16)."
+  },
+  {
+    "id": "ch4_q24",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which two Redis-based strategies are mentioned to mitigate race conditions without heavy locking?",
+    "options": [
+      "Lua scripts and Redis sorted sets",
+      "Redis replication and sharding",
+      "Bloom filters and vector clocks",
+      "Kafka partitions and consumer groups"
+    ],
+    "correctIndex": 0,
+    "explanation": "To avoid slow locks, the chapter mentions Lua scripts and using sorted sets in Redis as strategies (page 16)."
+  },
+  {
+    "id": "ch4_q25",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Why is a multi–data center (or edge) setup emphasized for rate limiters?",
+    "options": [
+      "It guarantees zero packet loss over the internet",
+      "It reduces latency for users far from the primary data center by routing to nearby edge locations",
+      "It ensures strict serializability of counters globally",
+      "It removes the need for Redis"
+    ],
+    "correctIndex": 1,
+    "explanation": "Latency can be high for users far away; routing to geographically distributed edge servers reduces latency (page 17)."
+  },
+  {
+    "id": "ch4_q26",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What consistency model is suggested for synchronizing rate limiter data across locations, according to the performance section?",
+    "options": [
+      "Strong consistency for every increment",
+      "Eventual consistency",
+      "Read-your-writes consistency only",
+      "Linearizable consistency with quorum writes"
+    ],
+    "correctIndex": 1,
+    "explanation": "The chapter suggests synchronizing data with an eventual consistency model for multi-location setups (page 18)."
+  },
+  {
+    "id": "ch4_q27",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which monitoring insight indicates rate-limiting rules might be too strict?",
+    "options": [
+      "Very few requests are ever dropped, even during traffic spikes",
+      "Many valid requests are being dropped; relaxing rules may be needed",
+      "Redis memory usage is low",
+      "Clients never receive the Retry-After header"
+    ],
+    "correctIndex": 1,
+    "explanation": "If rules are too strict, many valid requests get dropped; the chapter suggests relaxing rules in that case (page 18)."
+  },
+  {
+    "id": "ch4_q28",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "If your system must handle sudden flash-sale spikes without dropping too many valid requests, which algorithm does the chapter suggest as a good fit?",
+    "options": [
+      "Leaking bucket",
+      "Fixed window counter",
+      "Token bucket",
+      "Sliding window log"
+    ],
+    "correctIndex": 2,
+    "explanation": "For sudden traffic increases where burst support is useful, the chapter notes token bucket is a good fit (page 18)."
+  },
+  {
+    "id": "ch4_q29",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the difference between hard and soft rate limiting as described in the wrap-up?",
+    "options": [
+      "Hard limits apply only to authenticated users; soft limits apply to anonymous users",
+      "Hard limits mean the number of requests cannot exceed the threshold; soft limits allow exceeding briefly",
+      "Hard limits are done at layer 3; soft limits are done at layer 7",
+      "Hard limits require Redis; soft limits require a database"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hard: requests cannot exceed the threshold. Soft: requests can exceed for a short period (page 19)."
+  },
+  {
+    "id": "ch4_q30",
+    "chapter": "chapter_4_design_a_rate_limiter",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "The chapter states it discussed rate limiting at the application level (HTTP). Which OSI layer is that, and what is an example of rate limiting at a lower layer?",
+    "options": [
+      "Layer 7; use iptables at IP (Layer 3) for rate limiting by IP address",
+      "Layer 5; use TLS termination at Layer 6 for rate limiting",
+      "Layer 3; use HTTP headers at Layer 7 for rate limiting",
+      "Layer 2; use DNS at Layer 7 for rate limiting"
+    ],
+    "correctIndex": 0,
+    "explanation": "Application-level HTTP is OSI Layer 7; a lower-layer example mentioned is rate limiting by IP using iptables at IP/Network Layer 3 (page 19)."
+  }
+]
