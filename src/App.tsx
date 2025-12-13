@@ -1,15 +1,13 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
 import { AboutPage } from './pages/AboutPage'
 import { ChapterPage } from './pages/ChapterPage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
-const basePath = import.meta.env.BASE_URL ?? '/'
-
 function App() {
   return (
-    <BrowserRouter basename={basePath}>
+    <HashRouter>
       <AppLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -19,7 +17,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppLayout>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
