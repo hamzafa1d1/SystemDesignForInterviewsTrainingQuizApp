@@ -2,6 +2,8 @@
 
 An interactive web application that helps developers master system design concepts through bite-sized quizzes based on the "System Design Interview – An Insider's Guide" book. Built with modern web technologies, this app provides an engaging learning experience with instant feedback, progress tracking, and beautiful animations.
 
+**🚀 [Try it live at sysdesigncoach.org](https://www.sysdesigncoach.org/)**
+
 ## 🎯 Project Context
 
 System design interviews are crucial for senior engineering roles, but studying can be overwhelming. This app breaks down complex topics from the book into digestible quizzes, allowing you to:
@@ -143,13 +145,11 @@ This app is fully optimized for search engines and social sharing:
 - Lighthouse scores: 90+ across all metrics
 
 ### Deployment Checklist
-1. Update domain in [index.html](index.html#L19) (replace `yourdomain.com`)
-2. Update domain in [generate-sitemap.js](generate-sitemap.js#L8)
-3. Update domain in [public/robots.txt](public/robots.txt#L5)
-4. Run `npm run generate` to build with SEO assets
-5. Deploy `dist/client` folder to your hosting provider
-6. Submit sitemap to Google Search Console
-7. Verify meta tags using [OpenGraph.xyz](https://www.opengraph.xyz/) or [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+1. ✅ Domain configured: **[sysdesigncoach.org](https://www.sysdesigncoach.org/)**
+2. Run `npm run generate` to build with SEO assets
+3. Deploy `dist/client` folder to your hosting provider
+4. Submit sitemap to Google Search Console
+5. Verify meta tags using [OpenGraph.xyz](https://www.opengraph.xyz/) or [Twitter Card Validator](https://cards-dev.twitter.com/validator)
 
 ## 🤝 Contributing
 
@@ -205,6 +205,7 @@ This project is for educational purposes. The quiz content is based on "System D
 
 ## 📬 Contact & Support
 
+- **Live App**: [sysdesigncoach.org](https://www.sysdesigncoach.org/)
 - **Issues**: Report bugs or request features via [GitHub Issues](../../issues)
 - **Support**: If you find this project helpful, consider [buying me a coffee](https://buymeacoffee.com/hamzafaidi)
 
