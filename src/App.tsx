@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
 import { AboutPage } from './pages/AboutPage'
 import { ChapterPage } from './pages/ChapterPage'
@@ -7,7 +7,7 @@ import { NotFoundPage } from './pages/NotFoundPage'
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -17,7 +17,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppLayout>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
