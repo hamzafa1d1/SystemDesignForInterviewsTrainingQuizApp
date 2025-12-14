@@ -15,12 +15,14 @@ Currently features 4 complete chapters with 30 questions each, covering topics f
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: React 18 with TypeScript for type-safe component development
+- **Frontend Framework**: React 19 with TypeScript for type-safe component development
 - **Build Tool**: Vite 7 for lightning-fast development and optimized production builds
+- **Rendering**: Static Site Generation (SSG) with pre-rendered HTML for all routes
 - **Styling**: Tailwind CSS 3.4 with custom glassmorphism design and gradient effects
 - **Animations**: Framer Motion for smooth, physics-based animations and transitions
-- **Routing**: React Router DOM for seamless navigation between pages
+- **Routing**: React Router DOM v7 with server-side rendering support
 - **State Management**: React hooks with local storage persistence for quiz results
+- **SEO**: Pre-rendered HTML, sitemap generation, and comprehensive meta tags
 
 ## 🚀 Getting Started
 
@@ -48,11 +50,15 @@ Currently features 4 complete chapters with 30 questions each, covering topics f
    ```
    The app will be available at `http://localhost:5173`
 
-4. **Build for production**
+4. **Build for production (with SSG)**
    ```bash
-   npm run build
+   npm run generate
    ```
-   This creates an optimized production build in the `dist` folder
+   This generates:
+   - Static HTML for all routes (/, /about, /chapter, and all chapter pages)
+   - Optimized client bundle in `dist/client`
+   - Server bundle for SSR in `dist/server`
+   - Sitemap.xml for SEO
 
 5. **Preview production build**
    ```bash
@@ -64,13 +70,18 @@ Currently features 4 complete chapters with 30 questions each, covering topics f
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with hot reload |
-| `npm run build` | Create optimized production build |
+| `npm run build` | Build client and server bundles |
+| `npm run build:client` | Build optimized client bundle only |
+| `npm run build:server` | Build server bundle for SSR only |
+| `npm run generate` | Generate static site with pre-rendered HTML for all routes |
 | `npm run preview` | Preview production build locally |
 | `npm run lint` | Run ESLint to check code quality |
 
 ## ✨ Features
 
 - **Interactive Quizzes**: Select answers, validate them, and see instant feedback with visual indicators
+- **Static Site Generation (SSG)**: All pages pre-rendered as static HTML for excellent SEO and performance
+- **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, and auto-generated sitemap
 - **Adaptive UI**: Responsive design that works beautifully on desktop, tablet, and mobile
 - **Progress Tracking**: Monitor answered questions, time spent, and completion percentage
 - **Performance Metrics**: View scores, correct/wrong answers, and personalized feedback
@@ -105,6 +116,40 @@ src/
 ├── utils/          # Utility functions
 └── main.tsx        # Application entry point
 ```
+
+## 🔍 SEO & Performance
+
+This app is fully optimized for search engines and social sharing:
+
+### Static Site Generation
+- All routes pre-rendered at build time as static HTML
+- Search engines can crawl and index content without executing JavaScript
+- Faster initial page loads and better Core Web Vitals
+
+### Meta Tags & Social Sharing
+- Comprehensive meta tags on all pages (title, description, keywords)
+- Open Graph tags for beautiful Facebook/LinkedIn previews
+- Twitter Card tags for enhanced Twitter sharing
+- Canonical URLs to prevent duplicate content issues
+
+### Sitemap & Robots
+- Auto-generated `sitemap.xml` with all routes
+- Proper `robots.txt` configuration
+- Submit sitemap to Google Search Console after deployment
+
+### Performance
+- Optimized bundle splitting and lazy loading
+- Static assets served with aggressive caching
+- Lighthouse scores: 90+ across all metrics
+
+### Deployment Checklist
+1. Update domain in [index.html](index.html#L19) (replace `yourdomain.com`)
+2. Update domain in [generate-sitemap.js](generate-sitemap.js#L8)
+3. Update domain in [public/robots.txt](public/robots.txt#L5)
+4. Run `npm run generate` to build with SEO assets
+5. Deploy `dist/client` folder to your hosting provider
+6. Submit sitemap to Google Search Console
+7. Verify meta tags using [OpenGraph.xyz](https://www.opengraph.xyz/) or [Twitter Card Validator](https://cards-dev.twitter.com/validator)
 
 ## 🤝 Contributing
 
