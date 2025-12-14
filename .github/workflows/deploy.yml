@@ -32,13 +32,13 @@ jobs:
         run: npm ci
         # use `npm install` if you don't have package-lock.json
 
-      - name: Build
-        run: npm run build
+      - name: Build and Generate Static Site
+        run: npm run generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist/client
 
   deploy:
     needs: build
