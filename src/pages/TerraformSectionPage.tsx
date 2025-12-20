@@ -167,29 +167,34 @@ export function TerraformSectionPage() {
     <div className="space-y-8">
       <PageShell title={sectionMeta?.title ?? 'Terraform Section'}>
         {hasQuestions ? (
-          <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
+          <div className="grid gap-8 md:grid-cols-[0.7fr_0.3fr]">
             <div className="space-y-6">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70">
-                <div className="flex items-center justify-between">
-                  <p>
-                    Question {quiz.currentIndex + 1} of {quiz.totalQuestions}
-                  </p>
-                  <p className="font-mono text-mint">{quiz.timer.formatted}</p>
-                </div>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
+                <span className="rounded-full bg-white/10 px-3 py-1">
+                  Question {(quiz.currentIndex + 1).toString().padStart(2, '0')} /{' '}
+                  {quiz.totalQuestions.toString().padStart(2, '0')}
+                </span>
+                <span className="rounded-full border border-white/10 px-3 py-1">
+                  ⏱️ {quiz.timer.formatted}
+                </span>
               </div>
               <motion.article
-                className="glass-panel space-y-6 p-8"
                 key={quiz.currentIndex}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.3 }}
+                className="space-y-6"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
               >
-                <h2 className="font-display text-2xl leading-snug text-foam">
-                  {quiz.currentQuestion?.question}
-                </h2>
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-[0.4em] text-white/40">
+                    {quiz.currentQuestion?.difficulty ?? 'preview'}
+                  </p>
+                  <p className="text-lg text-foam">
+                    {quiz.currentQuestion?.question ?? 'Question placeholder'}
+                  </p>
+                </div>
                 <div className="space-y-3">
-                  {quiz.currentQuestion?.options.map((option, index) => {
+                  {(quiz.currentQuestion?.options ?? []).map((option, index) => {
                     const isSelected = quiz.selectedIndex === index
                     const isCorrectOption = quiz.currentQuestion?.correctIndex === index
                     const isValidated = quiz.isValidated
