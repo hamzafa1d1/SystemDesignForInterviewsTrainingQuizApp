@@ -3,6 +3,7 @@ import chapterTwoQuestions from './chapters/chapter_2_back_of_the_envelope_estim
 import chapterThreeQuestions from './chapters/chapter_3_framework_for_system_design_interviews.json'
 import chapterFourQuestions from './chapters/chapter_4_design_a_rate_limiter.json'
 import terraformIaC01Questions from './terraform/tf003_iac_01.json'
+import terraformFund01Questions from './terraform/tf003_fund_01.json'
 import type { Chapter, TerraformSection, Question, QuestionBank, QuizMetric } from '../types/content'
 
 const CHAPTER_ONE_ID = 'chapter_1_scale_from_zero_to_millions'
@@ -11,12 +12,14 @@ const CHAPTER_THREE_ID = 'chapter_3_framework_for_system_design_interviews'
 const CHAPTER_FOUR_ID = 'chapter_4_design_a_rate_limiter'
 
 const TF_IAC_01_ID = 'tf003-iac-01'
+const TF_FUND_01_ID = 'tf003-fund-01'
 
 const typedChapterOneQuestions = chapterOneQuestions as Question[]
 const typedChapterTwoQuestions = chapterTwoQuestions as Question[]
 const typedChapterThreeQuestions = chapterThreeQuestions as Question[]
 const typedChapterFourQuestions = chapterFourQuestions as Question[]
 const typedTerraformIaC01Questions = terraformIaC01Questions as Question[]
+const typedTerraformFund01Questions = terraformFund01Questions as Question[]
 
 export const chapterQuestionBank: QuestionBank = {
   [CHAPTER_ONE_ID]: typedChapterOneQuestions,
@@ -27,6 +30,7 @@ export const chapterQuestionBank: QuestionBank = {
 
 export const terraformQuestionBank: QuestionBank = {
   [TF_IAC_01_ID]: typedTerraformIaC01Questions,
+  [TF_FUND_01_ID]: typedTerraformFund01Questions,
 }
 
 export const chapters: Chapter[] = [
@@ -67,6 +71,13 @@ export const terraformSections: TerraformSection[] = [
     summary: 'Learn about Infrastructure as Code and the purpose, advantages, and core concepts of Terraform.',
     questionCount: typedTerraformIaC01Questions.length,
     etaMinutes: 45,
+  },
+  {
+    id: TF_FUND_01_ID,
+    title: 'Terraform Fundamentals',
+    summary: 'Review Terraform fundamentals including Get Started, Providers, State, Settings, Versions, Plugins, and Lock Files.',
+    questionCount: typedTerraformFund01Questions.length,
+    etaMinutes: 50,
   },
 ]
 
