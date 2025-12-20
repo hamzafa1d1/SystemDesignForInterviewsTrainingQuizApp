@@ -1,4 +1,5 @@
-export type Chapter = {
+// Generic interface for any quiz section (chapters, terraform sections, etc.)
+export interface QuizSection {
   id: string
   title: string
   summary: string
@@ -7,6 +8,11 @@ export type Chapter = {
   lastScore?: number
   timeSpentMinutes?: number
 }
+
+export type Chapter = QuizSection
+
+// Terraform sections use the same structure as chapters
+export type TerraformSection = QuizSection
 
 export type QuestionDifficulty = 'easy' | 'medium' | 'hard'
 

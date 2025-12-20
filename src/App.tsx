@@ -5,6 +5,7 @@ import { ChapterPage } from './pages/ChapterPage'
 import { HomePage } from './pages/HomePage'
 import { SystemDesignPage } from './pages/SystemDesignPage'
 import { TerraformPage } from './pages/TerraformPage'
+import { TerraformSectionPage } from './pages/TerraformSectionPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/system-design" element={<SystemDesignPage />} />
           <Route path="/terraform" element={<TerraformPage />} />
+          <Route path="/terraform/:sectionId" element={<TerraformSectionPage />} />
           <Route path="/chapter" element={<ChapterPage />} />
           <Route path="/chapter/:chapterId" element={<ChapterPage />} />
           <Route path="/about" element={<AboutPage />} />

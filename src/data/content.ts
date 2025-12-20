@@ -2,23 +2,31 @@ import chapterOneQuestions from './chapters/chapter_1_scale_from_zero_to_million
 import chapterTwoQuestions from './chapters/chapter_2_back_of_the_envelope_estimation.json'
 import chapterThreeQuestions from './chapters/chapter_3_framework_for_system_design_interviews.json'
 import chapterFourQuestions from './chapters/chapter_4_design_a_rate_limiter.json'
-import type { Chapter, Question, QuestionBank, QuizMetric } from '../types/content'
+import terraformIaC01Questions from './terraform/tf003_iac_01.json'
+import type { Chapter, TerraformSection, Question, QuestionBank, QuizMetric } from '../types/content'
 
 const CHAPTER_ONE_ID = 'chapter_1_scale_from_zero_to_millions'
 const CHAPTER_TWO_ID = 'chapter_2_back_of_the_envelope_estimation'
 const CHAPTER_THREE_ID = 'chapter_3_framework_for_system_design_interviews'
 const CHAPTER_FOUR_ID = 'chapter_4_design_a_rate_limiter'
 
+const TF_IAC_01_ID = 'tf003-iac-01'
+
 const typedChapterOneQuestions = chapterOneQuestions as Question[]
 const typedChapterTwoQuestions = chapterTwoQuestions as Question[]
 const typedChapterThreeQuestions = chapterThreeQuestions as Question[]
 const typedChapterFourQuestions = chapterFourQuestions as Question[]
+const typedTerraformIaC01Questions = terraformIaC01Questions as Question[]
 
 export const chapterQuestionBank: QuestionBank = {
   [CHAPTER_ONE_ID]: typedChapterOneQuestions,
   [CHAPTER_TWO_ID]: typedChapterTwoQuestions,
   [CHAPTER_THREE_ID]: typedChapterThreeQuestions,
   [CHAPTER_FOUR_ID]: typedChapterFourQuestions,
+}
+
+export const terraformQuestionBank: QuestionBank = {
+  [TF_IAC_01_ID]: typedTerraformIaC01Questions,
 }
 
 export const chapters: Chapter[] = [
@@ -49,6 +57,16 @@ export const chapters: Chapter[] = [
     summary: 'Why rate limiting matters, common algorithms (token bucket, leaky bucket, fixed/sliding windows), and Redis-based distributed designs.',
     questionCount: typedChapterFourQuestions.length,
     etaMinutes: 35,
+  },
+]
+
+export const terraformSections: TerraformSection[] = [
+  {
+    id: TF_IAC_01_ID,
+    title: 'Infrastructure as Code (IaC) Fundamentals',
+    summary: 'Learn about Infrastructure as Code and the purpose, advantages, and core concepts of Terraform.',
+    questionCount: typedTerraformIaC01Questions.length,
+    etaMinutes: 45,
   },
 ]
 
