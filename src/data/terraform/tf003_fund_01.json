@@ -1,0 +1,662 @@
+[
+  {
+    "id": "tf003-fund-01-q001",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which Terraform command is responsible for installing providers and initializing the working directory for the first time?",
+    "options": [
+      "terraform plan",
+      "terraform init",
+      "terraform apply",
+      "terraform validate"
+    ],
+    "correctIndex": 1,
+    "explanation": "`terraform init` initializes the directory, configures backend (if any), and installs required provider plugins."
+  },
+  {
+    "id": "tf003-fund-01-q002",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You run `terraform plan` after editing configuration files. Which statement is correct about Terraform state at this moment?",
+    "options": [
+      "Terraform state is updated immediately during plan",
+      "Terraform state is never needed for plan",
+      "Terraform state is not written/updated by plan; it is updated when changes are applied",
+      "Terraform state is deleted and recreated during plan"
+    ],
+    "correctIndex": 2,
+    "explanation": "`terraform plan` calculates proposed changes using config + current state (and provider reads), but it does not commit state updates; state is written during apply when changes are executed."
+  },
+  {
+    "id": "tf003-fund-01-q003",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the primary purpose of Terraform state?",
+    "options": [
+      "To store only the Terraform CLI version in use",
+      "To map Terraform-managed resources in configuration to real-world resources and store their known attributes",
+      "To replace provider authentication mechanisms",
+      "To automatically encrypt all infrastructure resources"
+    ],
+    "correctIndex": 1,
+    "explanation": "State is a data structure Terraform uses to track resource instances, their IDs, and attributes so it can plan/apply changes correctly."
+  },
+  {
+    "id": "tf003-fund-01-q004",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement best describes why Terraform uses providers as plugins?",
+    "options": [
+      "So Terraform can compile HCL into machine code",
+      "So Terraform Core can interact with many APIs (cloud/SaaS/on-prem) without embedding that logic directly in Core",
+      "So Terraform can run without any network access",
+      "So Terraform can store state without a backend"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform Core is provider-agnostic; providers are plugins that implement resource/data source logic and API interactions for specific platforms."
+  },
+  {
+    "id": "tf003-fund-01-q005",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Where does Terraform typically record provider version selections to make installs repeatable across machines?",
+    "options": [
+      "main.tf",
+      ".terraform.lock.hcl",
+      "terraform.tfstate",
+      ".gitignore"
+    ],
+    "correctIndex": 1,
+    "explanation": "The dependency lock file `.terraform.lock.hcl` records selected provider versions and checksums to ensure consistent installs."
+  },
+  {
+    "id": "tf003-fund-01-q006",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the relationship between a provider version constraint in configuration and the `.terraform.lock.hcl` file?",
+    "options": [
+      "The lock file replaces version constraints entirely and constraints are ignored",
+      "Constraints define the allowed range; the lock file pins a specific selected version within that range",
+      "The lock file pins Terraform Core version, not providers",
+      "Constraints only apply to local backends, lock files only apply to remote backends"
+    ],
+    "correctIndex": 1,
+    "explanation": "Version constraints define allowed versions; the lock file records the exact version Terraform selected (plus checksums) for repeatability."
+  },
+  {
+    "id": "tf003-fund-01-q007",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You have an existing `.terraform.lock.hcl` that pins a provider version. You want Terraform to pick newer allowed versions (still within constraints) and update the lock file. What is the best approach?",
+    "options": [
+      "Run `terraform apply` with no flags",
+      "Run `terraform init -upgrade`",
+      "Delete your configuration files and rerun `terraform init`",
+      "Run `terraform plan -destroy`"
+    ],
+    "correctIndex": 1,
+    "explanation": "`terraform init -upgrade` instructs Terraform to re-check for newer acceptable provider versions and update the dependency lock file accordingly."
+  },
+  {
+    "id": "tf003-fund-01-q008",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which scenario most commonly requires state locking to prevent corruption?",
+    "options": [
+      "A single user running Terraform on their laptop with only local state",
+      "Multiple users/automation running Terraform against the same state at the same time",
+      "Using variables instead of hardcoded values",
+      "Using only data sources and no resources"
+    ],
+    "correctIndex": 1,
+    "explanation": "Concurrent operations against the same state can cause conflicts and corruption. Locking prevents multiple writers at the same time (backend-dependent)."
+  },
+  {
+    "id": "tf003-fund-01-q009",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement is TRUE about secrets in Terraform state?",
+    "options": [
+      "Terraform state never contains sensitive values",
+      "Terraform state may contain sensitive values; you must secure access to state storage",
+      "Terraform state always encrypts itself automatically on disk with no configuration",
+      "Terraform state stores only resource names, not attributes"
+    ],
+    "correctIndex": 1,
+    "explanation": "State can include resource attributes (sometimes sensitive). You must treat state as sensitive and protect it (access control, encryption at rest/in transit, etc.)."
+  },
+  {
+    "id": "tf003-fund-01-q010",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In Terraform configuration, what is the main purpose of the `terraform {}` block (Terraform Settings)?",
+    "options": [
+      "To define resources like VMs and networks",
+      "To configure Terraform behavior such as required Terraform version, required providers, and backend/cloud settings",
+      "To store runtime plan output",
+      "To declare provider authentication credentials"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform Settings in the `terraform {}` block define meta-configuration (required_version, required_providers, backend/cloud settings, etc.)."
+  },
+  {
+    "id": "tf003-fund-01-q011",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the best description of `required_version` in Terraform settings?",
+    "options": [
+      "It pins the provider version used for AWS/Azure/etc.",
+      "It constrains which Terraform CLI/Core versions are allowed to run this configuration",
+      "It upgrades Terraform automatically to the newest version",
+      "It configures state file format version only"
+    ],
+    "correctIndex": 1,
+    "explanation": "`required_version` sets a constraint on Terraform CLI/Core version so the configuration is run with compatible Terraform versions."
+  },
+  {
+    "id": "tf003-fund-01-q012",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A teammate adds a new provider to the configuration. After pulling the latest code, what must you do before planning/applying?",
+    "options": [
+      "Nothing; Terraform automatically downloads new providers during `plan`",
+      "Run `terraform init` to install the new provider plugin",
+      "Run `terraform destroy` to reset providers",
+      "Manually download the provider binary into your PATH"
+    ],
+    "correctIndex": 1,
+    "explanation": "When providers change, you typically run `terraform init` to install required plugins and update local initialization artifacts."
+  },
+  {
+    "id": "tf003-fund-01-q013",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement best explains why the `.terraform` directory is usually not committed to version control?",
+    "options": [
+      "It contains your Terraform code and should be private",
+      "It contains local cache/installed plugins and backend initialization artifacts that are machine-specific and reproducible via `terraform init`",
+      "It contains the only copy of your state",
+      "It is required to be committed for Terraform Cloud"
+    ],
+    "correctIndex": 1,
+    "explanation": "`.terraform/` contains local initialization data and provider binaries; it's reproducible and often platform-specific, so it's typically not committed."
+  },
+  {
+    "id": "tf003-fund-01-q014",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You change backend configuration in your Terraform settings. Which command is most directly involved in reinitializing backend configuration?",
+    "options": [
+      "terraform init",
+      "terraform fmt",
+      "terraform providers",
+      "terraform output"
+    ],
+    "correctIndex": 0,
+    "explanation": "Backends are configured/initialized during `terraform init`. Backend changes often require reinitialization."
+  },
+  {
+    "id": "tf003-fund-01-q015",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Why do Terraform providers commonly need explicit configuration (e.g., region/subscription/project)?",
+    "options": [
+      "Because Terraform Core cannot parse HCL without provider config",
+      "Because providers need connection/auth context to know which API endpoints/account to manage resources in",
+      "Because state files require a region field",
+      "Because provider configuration determines how many resources Terraform can create"
+    ],
+    "correctIndex": 1,
+    "explanation": "Providers interact with external APIs; configuration supplies target context (account/project/region) and often authentication details."
+  },
+  {
+    "id": "tf003-fund-01-q016",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A configuration uses two different accounts/regions for the same provider. What Terraform concept supports this pattern cleanly?",
+    "options": [
+      "Provider aliases (multiple provider configurations)",
+      "Multiple state files in the same directory automatically",
+      "Multiple `.terraform.lock.hcl` files in the same directory",
+      "Running `terraform apply` twice without changes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform supports multiple configurations of the same provider via `alias`, enabling resources to target different accounts/regions."
+  },
+  {
+    "id": "tf003-fund-01-q017",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the most accurate statement about how Terraform decides resource creation order?",
+    "options": [
+      "Resources are created alphabetically by name",
+      "Resources are created in the order they appear in files",
+      "Terraform builds a dependency graph from references and explicit dependencies, then orders operations accordingly",
+      "Terraform always creates everything in parallel with no ordering"
+    ],
+    "correctIndex": 2,
+    "explanation": "Terraform uses a dependency graph to determine ordering and parallelism safely based on references and explicit dependencies."
+  },
+  {
+    "id": "tf003-fund-01-q018",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is the primary role of `terraform destroy`?",
+    "options": [
+      "To remove Terraform configuration files",
+      "To delete Terraform-managed resources described by the current state",
+      "To delete the provider plugins from HashiCorp Registry",
+      "To reset your Git repository"
+    ],
+    "correctIndex": 1,
+    "explanation": "`terraform destroy` plans and applies the deletion of managed resources tracked in state."
+  },
+  {
+    "id": "tf003-fund-01-q019",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement best distinguishes Terraform state from Terraform configuration?",
+    "options": [
+      "Configuration is generated by Terraform; state is handwritten by users",
+      "Configuration defines desired infrastructure; state records Terraform's current knowledge of real resources and their attributes",
+      "State is optional and never used for planning",
+      "Configuration is stored only remotely; state is always local"
+    ],
+    "correctIndex": 1,
+    "explanation": "Configuration expresses intent (desired state). Terraform state stores the mappings and known attributes of actual resources."
+  },
+  {
+    "id": "tf003-fund-01-q020",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the key security implication of sharing Terraform state in a team?",
+    "options": [
+      "State can expose sensitive values, so access controls and encryption are important",
+      "State automatically strips all secrets before saving",
+      "State is only a checksum file and contains no content",
+      "State is safe to publish publicly because it is always hashed"
+    ],
+    "correctIndex": 0,
+    "explanation": "State may include sensitive attributes. Teams should secure state storage and access (principle of least privilege, encryption, audit logs)."
+  },
+  {
+    "id": "tf003-fund-01-q021",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which file is most appropriate to commit to version control to ensure provider selections are reproducible?",
+    "options": [
+      ".terraform/",
+      ".terraform.lock.hcl",
+      "terraform.tfstate",
+      "crash.log"
+    ],
+    "correctIndex": 1,
+    "explanation": "`.terraform.lock.hcl` is intended to be committed so that provider versions/checksums are consistent for the team and CI."
+  },
+  {
+    "id": "tf003-fund-01-q022",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A teammate runs `terraform init` and gets a different provider version than you, despite both having the same version constraints. What most likely prevents this in a well-managed project?",
+    "options": [
+      "Using only local state",
+      "Using `.terraform.lock.hcl` committed to version control",
+      "Running `terraform fmt` before `terraform init`",
+      "Using variables instead of hardcoded values"
+    ],
+    "correctIndex": 1,
+    "explanation": "The lock file pins exact provider versions/checksums; without it, Terraform may choose different acceptable versions depending on timing/caches."
+  },
+  {
+    "id": "tf003-fund-01-q023",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the best description of how Terraform works with plugins (providers) at runtime?",
+    "options": [
+      "Terraform Core calls provider APIs directly; providers are only documentation",
+      "Providers are separate plugins that Terraform Core communicates with to plan and apply changes",
+      "Providers are embedded into the state file and executed from there",
+      "Providers only run during `terraform fmt`"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform Core delegates provider-specific logic to provider plugins, communicating to read data, plan diffs, and apply CRUD operations."
+  },
+  {
+    "id": "tf003-fund-01-q024",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which command is the best first step to catch basic syntax/configuration issues before planning?",
+    "options": [
+      "terraform validate",
+      "terraform destroy",
+      "terraform output",
+      "terraform taint"
+    ],
+    "correctIndex": 0,
+    "explanation": "`terraform validate` checks whether the configuration is syntactically valid and internally consistent (without applying changes)."
+  },
+  {
+    "id": "tf003-fund-01-q025",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Your configuration includes a provider constraint, but no `.terraform.lock.hcl` exists. How does Terraform typically choose the provider version on `terraform init`?",
+    "options": [
+      "It always chooses the absolute newest provider version available, ignoring constraints",
+      "It chooses the oldest provider version that satisfies constraints",
+      "It chooses the newest provider version that satisfies the constraints at initialization time",
+      "It refuses to initialize without a lock file"
+    ],
+    "correctIndex": 2,
+    "explanation": "Without a lock file, Terraform selects the latest available provider version that still matches the configured version constraints."
+  },
+  {
+    "id": "tf003-fund-01-q026",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement is correct about the dependency lock file (`.terraform.lock.hcl`)?",
+    "options": [
+      "It is the same as the state file and contains resource IDs",
+      "It is primarily used to lock Terraform CLI versions",
+      "It records provider selections (versions and checksums) to make installs consistent across platforms",
+      "It is only created when using remote state"
+    ],
+    "correctIndex": 2,
+    "explanation": "The lock file is for provider dependencies: selected versions and checksums (and often multiple platform checksums). It's not the state file."
+  },
+  {
+    "id": "tf003-fund-01-q027",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A CI pipeline uses Terraform in an ephemeral environment each run. What is a key reason committing `.terraform.lock.hcl` helps CI reliability?",
+    "options": [
+      "It ensures CI uses the same provider versions as developers, reducing unexpected diffs",
+      "It makes Terraform skip planning and apply instantly",
+      "It prevents any state from being used",
+      "It automatically stores CI secrets in the lock file"
+    ],
+    "correctIndex": 0,
+    "explanation": "By pinning provider versions/checksums, CI and developer environments resolve the same dependencies, reducing random provider-version drift."
+  },
+  {
+    "id": "tf003-fund-01-q028",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which is the BEST statement about upgrading Terraform provider versions safely in a team environment?",
+    "options": [
+      "Never upgrade providers; always use whatever the registry newest is at runtime",
+      "Update version constraints and regenerate/update `.terraform.lock.hcl`, then review plan output before applying",
+      "Only delete the state file to force upgrades",
+      "Upgrade by editing `.terraform/` binaries manually"
+    ],
+    "correctIndex": 1,
+    "explanation": "Safe upgrades involve controlled constraints, updating the lock file (often via `init -upgrade`), and reviewing plan output for behavior changes."
+  },
+  {
+    "id": "tf003-fund-01-q029",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What does the Get Started workflow primarily teach you about Terraform lifecycle?",
+    "options": [
+      "Only how to write providers in Go",
+      "How to create, modify, and destroy infrastructure resources using init/plan/apply/destroy",
+      "How to manage Linux packages inside VMs",
+      "How to build dashboards and alerts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Get Started tutorials focus on the Terraform workflow and lifecycle: initialize, plan, apply, iterate, and destroy."
+  },
+  {
+    "id": "tf003-fund-01-q030",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You run `terraform apply` and it fails partway through after creating some resources. Which statement is most accurate?",
+    "options": [
+      "Terraform always rolls back everything automatically on failure",
+      "Terraform may have created some resources; the state might reflect completed changes, and the next plan/apply will attempt to converge",
+      "Terraform deletes the state file to avoid inconsistency",
+      "Terraform cannot recover from partial failures and must start over with a new folder"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform is not a transactional system across all providers. Partial changes can occur; subsequent runs use state and real-world reads to converge."
+  },
+  {
+    "id": "tf003-fund-01-q031",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement is TRUE about provider configuration and authentication best practices?",
+    "options": [
+      "Hardcode secrets directly in configuration to ensure reproducibility",
+      "Prefer using environment variables or secret managers and avoid committing secrets to VCS",
+      "Store secrets only in `.terraform.lock.hcl`",
+      "Authentication is handled only by Terraform Core, not by providers"
+    ],
+    "correctIndex": 1,
+    "explanation": "Avoid committing secrets. Prefer environment variables, external secret stores, or secure CI secret injection; providers use that context to authenticate."
+  },
+  {
+    "id": "tf003-fund-01-q032",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A provider is referenced in configuration, but `terraform init` fails because it cannot find it. Which is a likely root cause?",
+    "options": [
+      "The provider source address/name is incorrect or not available in the configured installation sources",
+      "Terraform plan was not run first",
+      "State locking is disabled",
+      "The backend is local"
+    ],
+    "correctIndex": 0,
+    "explanation": "Provider installation relies on correct provider source addresses and configured installation methods; typos or unavailable sources commonly cause init failures."
+  },
+  {
+    "id": "tf003-fund-01-q033",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Why is deleting `terraform.tfstate` considered dangerous in most real projects?",
+    "options": [
+      "It only removes formatting settings",
+      "It removes Terraform's mapping to existing resources, which can cause Terraform to try to recreate or lose track of infrastructure",
+      "It upgrades providers automatically",
+      "It forces state locking to enable"
+    ],
+    "correctIndex": 1,
+    "explanation": "State is Terraform's record of managed resources. Deleting it breaks tracking, often leading to duplicate resources or unmanaged leftovers."
+  },
+  {
+    "id": "tf003-fund-01-q034",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which best explains why Terraform needs to store resource IDs in state?",
+    "options": [
+      "To speed up HCL parsing",
+      "To identify and manage the exact real-world objects on future runs (update/destroy) even if names differ",
+      "To avoid using providers",
+      "To generate cost reports"
+    ],
+    "correctIndex": 1,
+    "explanation": "Resource IDs are how providers/APIs uniquely identify objects. Terraform uses them to update/destroy the correct resource instances."
+  },
+  {
+    "id": "tf003-fund-01-q035",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You need different provider behavior for a subset of resources (e.g., different region). What is the Terraform-idiomatic approach?",
+    "options": [
+      "Duplicate the entire project in a new folder",
+      "Use multiple provider configurations and select them per-resource (e.g., via provider aliasing)",
+      "Edit the state file to change regions",
+      "Run `terraform plan` twice with different CLI flags and hope it picks the right region"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform supports multiple provider instances via aliases; resources can be associated with a specific provider configuration."
+  },
+  {
+    "id": "tf003-fund-01-q036",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What does `terraform fmt` primarily do?",
+    "options": [
+      "Downloads provider plugins",
+      "Formats Terraform configuration files to a canonical style",
+      "Encrypts the state file",
+      "Generates an execution plan"
+    ],
+    "correctIndex": 1,
+    "explanation": "`terraform fmt` formats `.tf` files consistently (spacing, indentation, style), improving readability and reducing diffs."
+  },
+  {
+    "id": "tf003-fund-01-q037",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "What is the best reason to use a remote backend for state in a team?",
+    "options": [
+      "It makes `terraform apply` run without providers",
+      "It enables centralized state storage with better collaboration features such as locking and shared access (backend-dependent)",
+      "It prevents any drift from happening",
+      "It eliminates the need for `.terraform.lock.hcl`"
+    ],
+    "correctIndex": 1,
+    "explanation": "Remote state centralizes the source of truth for the team and often supports locking and secure access patterns, depending on the backend."
+  },
+  {
+    "id": "tf003-fund-01-q038",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which is the most accurate statement about state locking?",
+    "options": [
+      "Terraform always locks state, regardless of backend",
+      "State locking depends on the backend; some support it while others may not",
+      "State locking is only available for local state",
+      "State locking is stored in `.terraform.lock.hcl`"
+    ],
+    "correctIndex": 1,
+    "explanation": "State locking is a backend capability. Many remote backends support locking; some backends may not provide strong locking."
+  },
+  {
+    "id": "tf003-fund-01-q039",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You switched Terraform CLI versions locally and want to ensure the project enforces compatible Terraform versions for everyone. What should you add/update?",
+    "options": [
+      "A new `resource` called `terraform_version`",
+      "The `required_version` constraint in the `terraform {}` block",
+      "A provider alias",
+      "The `.terraform/` directory committed to git"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use `required_version` in Terraform settings to constrain which Terraform CLI/Core versions are allowed."
+  },
+  {
+    "id": "tf003-fund-01-q040",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "A teammate ran `terraform init` successfully yesterday. Today your `terraform init` fails with checksum mismatch for a provider. Which explanation best fits Terraform fundamentals?",
+    "options": [
+      "Terraform randomly corrupts providers and must be reinstalled daily",
+      "Checksums in `.terraform.lock.hcl` are used to verify provider authenticity/integrity; a mismatch suggests a different artifact than expected",
+      "Checksum mismatches only happen when you edit the state file manually",
+      "This indicates your configuration syntax is invalid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform uses checksums in the lock file to verify the provider package. A mismatch indicates the downloaded provider artifact does not match the recorded checksum."
+  },
+  {
+    "id": "tf003-fund-01-q041",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "You need to keep Terraform CLI versions consistent across dev machines and CI. Which approach is most aligned with the 'Manage Terraform Versions' concept?",
+    "options": [
+      "Let each engineer choose any Terraform version; compatibility is guaranteed",
+      "Use a Terraform version manager / pinned version strategy and enforce compatibility with `required_version`",
+      "Store the Terraform binary inside the state file",
+      "Pin provider versions only; Terraform CLI version never matters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Managing Terraform versions typically means pinning/standardizing CLI versions (often via a version manager) and enforcing compatibility via `required_version`."
+  },
+  {
+    "id": "tf003-fund-01-q042",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which statement best captures why provider upgrades can cause unexpected diffs even when your HCL configuration did not change?",
+    "options": [
+      "Providers change their internal behavior/schema over time, affecting how resources are read/planned",
+      "Terraform ignores state when providers upgrade",
+      "Provider upgrades always delete your resources first",
+      "Provider upgrades only affect formatting (`terraform fmt`)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Provider versions can change resource schemas, defaults, and read/plan/apply behavior, producing different diffs without HCL changes."
+  },
+  {
+    "id": "tf003-fund-01-q043",
+    "chapter": "tf003-fund-01",
+    "difficulty": "hard",
+    "type": "mcq_single",
+    "question": "Which choice best explains the role of the provider registry/source address concept?",
+    "options": [
+      "It defines the backend type for storing state",
+      "It uniquely identifies where to download a provider plugin from (namespace/source), enabling non-default or third-party providers",
+      "It forces Terraform to run offline",
+      "It is used only to store output values"
+    ],
+    "correctIndex": 1,
+    "explanation": "Provider source addresses identify the provider's publisher/namespace and where Terraform should install it from (commonly a registry)."
+  },
+  {
+    "id": "tf003-fund-01-q044",
+    "chapter": "tf003-fund-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which command shows you what providers are required by the current configuration (and/or in use)?",
+    "options": [
+      "terraform providers",
+      "terraform version",
+      "terraform fmt",
+      "terraform destroy"
+    ],
+    "correctIndex": 0,
+    "explanation": "`terraform providers` helps inspect provider requirements and usage, which is useful for troubleshooting provider-related issues."
+  }
+]

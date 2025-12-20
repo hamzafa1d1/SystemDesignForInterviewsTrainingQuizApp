@@ -1,0 +1,602 @@
+[
+  {
+    "id": "tf003-iac-01-q001",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What best describes Infrastructure as Code (IaC)?",
+    "options": [
+      "A method of manually configuring servers using a GUI",
+      "A practice of defining and managing infrastructure using code and automation",
+      "A database technique for storing infrastructure metadata",
+      "A cloud provider feature that only works in public clouds"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC means provisioning and managing infrastructure (networks, VMs, services, policies) using code and automated workflows instead of manual steps."
+  },
+  {
+    "id": "tf003-iac-01-q002",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which is a primary advantage of IaC over manual provisioning?",
+    "options": [
+      "It removes the need for documentation entirely",
+      "It guarantees zero outages",
+      "It improves consistency and repeatability of environments",
+      "It prevents any infrastructure changes from happening"
+    ],
+    "correctIndex": 2,
+    "explanation": "IaC enables consistent, repeatable environments across dev/staging/prod and reduces human error."
+  },
+  {
+    "id": "tf003-iac-01-q003",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Why is storing IaC in version control (e.g., Git) valuable?",
+    "options": [
+      "It automatically deploys changes without review",
+      "It provides history, collaboration, and the ability to roll back changes",
+      "It encrypts cloud resources by default",
+      "It removes the need for testing infrastructure changes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Version control provides traceability, collaboration via PRs, and easier rollbacks."
+  },
+  {
+    "id": "tf003-iac-01-q004",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What does 'repeatability' mean in the context of IaC?",
+    "options": [
+      "Infrastructure can be recreated consistently from the same code",
+      "Infrastructure must be unique per environment",
+      "Infrastructure can only be deployed once",
+      "Infrastructure must be created by clicking the same GUI buttons"
+    ],
+    "correctIndex": 0,
+    "explanation": "Repeatability means the same code can consistently reproduce the same infrastructure."
+  },
+  {
+    "id": "tf003-iac-01-q005",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In IaC, what is 'configuration drift'?",
+    "options": [
+      "The time it takes Terraform to run",
+      "When the actual infrastructure differs from what the code defines",
+      "A Terraform feature for changing provider versions",
+      "An AWS-only networking issue"
+    ],
+    "correctIndex": 1,
+    "explanation": "Drift occurs when real infrastructure changes outside the code, diverging from the desired declared state."
+  },
+  {
+    "id": "tf003-iac-01-q006",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Terraform configuration is primarily:",
+    "options": [
+      "Declarative (describe desired end state)",
+      "Imperative (describe step-by-step commands)",
+      "Compiled into machine code",
+      "Limited to GUI-based workflows"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform is mainly declarative: you define the target outcome and Terraform decides the steps."
+  },
+  {
+    "id": "tf003-iac-01-q007",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What is Terraform primarily used for?",
+    "options": [
+      "Writing application business logic",
+      "Managing infrastructure across cloud and on-prem systems using code",
+      "Replacing operating systems on laptops",
+      "Monitoring application performance metrics"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform provisions and manages infrastructure resources via providers across many platforms."
+  },
+  {
+    "id": "tf003-iac-01-q008",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which sequence best represents Terraform's typical workflow?",
+    "options": [
+      "apply → plan → init",
+      "init → plan → apply",
+      "plan → init → apply",
+      "destroy → init → plan"
+    ],
+    "correctIndex": 1,
+    "explanation": "You initialize (init), preview changes (plan), then execute them (apply)."
+  },
+  {
+    "id": "tf003-iac-01-q009",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What is the main value of running `terraform plan`?",
+    "options": [
+      "It permanently creates all infrastructure",
+      "It previews the changes Terraform would make before applying",
+      "It upgrades all providers automatically",
+      "It deletes unused resources without confirmation"
+    ],
+    "correctIndex": 1,
+    "explanation": "`terraform plan` shows the expected create/update/destroy actions before making changes."
+  },
+  {
+    "id": "tf003-iac-01-q010",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Terraform configurations are described as 'human and machine-readable' because:",
+    "options": [
+      "They are written in a structured, readable language designed for automation",
+      "They require a GUI to interpret",
+      "They only work as binary files",
+      "They must be generated by cloud provider consoles"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform configurations are written in a readable format that tools can parse and humans can maintain."
+  },
+  {
+    "id": "tf003-iac-01-q011",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Why is Terraform often considered 'vendor-neutral'?",
+    "options": [
+      "It can manage resources across many providers using a consistent workflow",
+      "It only works with one cloud provider at a time",
+      "It requires proprietary hardware",
+      "It cannot be used in private clouds"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform supports many providers (cloud, SaaS, on-prem), using the same workflow across them."
+  },
+  {
+    "id": "tf003-iac-01-q012",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "How does IaC support auditing and compliance?",
+    "options": [
+      "By preventing logs from being generated",
+      "By keeping all infrastructure changes invisible",
+      "By recording infrastructure intent and changes in code and reviewable history",
+      "By guaranteeing every resource is encrypted without configuration"
+    ],
+    "correctIndex": 2,
+    "explanation": "IaC enables traceability through code history, reviews, and explicit change plans."
+  },
+  {
+    "id": "tf003-iac-01-q013",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Compared to manual setup, IaC generally improves:",
+    "options": [
+      "Only aesthetics of dashboards",
+      "Deployment speed and reliability through automation",
+      "CPU performance of applications automatically",
+      "Human creativity in infrastructure design"
+    ],
+    "correctIndex": 1,
+    "explanation": "Automation reduces repetitive work and human error, improving speed and reliability."
+  },
+  {
+    "id": "tf003-iac-01-q014",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which statement best matches the idea of idempotency in IaC tools like Terraform?",
+    "options": [
+      "Running the same configuration multiple times results in the same final state",
+      "Every run always recreates everything from scratch",
+      "Runs are random to prevent predictability",
+      "It only applies to database migrations"
+    ],
+    "correctIndex": 0,
+    "explanation": "Idempotency means repeated applies should not cause changes if the infrastructure already matches the desired state."
+  },
+  {
+    "id": "tf003-iac-01-q015",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which Terraform capability most directly helps manage infrastructure safely at scale?",
+    "options": [
+      "State tracking and planning changes before applying",
+      "A built-in web browser",
+      "Only supporting one region per project",
+      "Forcing all resources to be created manually"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform uses state and an execution plan to compute and preview changes safely."
+  },
+  {
+    "id": "tf003-iac-01-q016",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "How does IaC help teams collaborate on infrastructure changes?",
+    "options": [
+      "It makes infrastructure changes unreviewable",
+      "It allows code review, branching, and standard development workflows for infra",
+      "It requires one person to manage everything to avoid conflicts",
+      "It removes the ability to document changes"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC enables collaborative workflows (PRs, reviews, CI checks) like application code."
+  },
+  {
+    "id": "tf003-iac-01-q017",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "IaC is useful in private and public clouds because it:",
+    "options": [
+      "Only works when resources are public",
+      "Standardizes provisioning and change management regardless of where infrastructure runs",
+      "Requires internet-facing endpoints for all resources",
+      "Eliminates the need for security controls"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC practices apply anywhere: define desired infrastructure and automate the provisioning and changes."
+  },
+  {
+    "id": "tf003-iac-01-q018",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which scenario is a strong use case for Terraform?",
+    "options": [
+      "Managing infrastructure across AWS and Azure with a consistent workflow",
+      "Replacing a company's HR payroll software",
+      "Writing unit tests for a C# library",
+      "Editing images for marketing content"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform is commonly used for consistent provisioning across multiple clouds/providers."
+  },
+  {
+    "id": "tf003-iac-01-q019",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "A company wants every new project to include the same networking baseline (VPC/VNet, subnets, security rules). Terraform helps most by:",
+    "options": [
+      "Encouraging each engineer to create networks manually",
+      "Defining reusable building blocks for consistent infrastructure",
+      "Disabling version control for faster changes",
+      "Removing all documentation to reduce overhead"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reusable code patterns (commonly modules) help standardize infrastructure and reduce duplication and mistakes."
+  },
+  {
+    "id": "tf003-iac-01-q020",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which task is most aligned with Terraform's strengths?",
+    "options": [
+      "Provisioning a new cloud environment (networks, compute, managed services) from scratch",
+      "Analyzing CPU usage in production and generating alerts",
+      "Debugging application exceptions in code",
+      "Designing UI mockups"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform excels at provisioning and managing infrastructure resources across their lifecycle."
+  },
+  {
+    "id": "tf003-iac-01-q021",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "What is a major risk of relying heavily on manual console changes (ClickOps) instead of IaC?",
+    "options": [
+      "Infrastructure becomes easier to reproduce",
+      "Changes are always documented consistently",
+      "Higher likelihood of drift and untracked changes",
+      "Lower chance of human error"
+    ],
+    "correctIndex": 2,
+    "explanation": "Manual changes are often untracked/unreviewed, which increases drift and makes troubleshooting harder."
+  },
+  {
+    "id": "tf003-iac-01-q022",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "How can Terraform configurations act as documentation?",
+    "options": [
+      "They describe desired infrastructure in code that can be read and reviewed",
+      "They replace all architectural diagrams automatically",
+      "They eliminate the need for comments or explanations",
+      "They only document costs, not resources"
+    ],
+    "correctIndex": 0,
+    "explanation": "Well-written IaC is living documentation of what should exist and how it is configured."
+  },
+  {
+    "id": "tf003-iac-01-q023",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which practice best supports safer infrastructure changes when using IaC?",
+    "options": [
+      "Applying changes directly to production without review",
+      "Reviewing pull requests and Terraform plans before applying",
+      "Allowing only one person to ever change infra",
+      "Avoiding automation to reduce complexity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reviewing the code and the plan reduces surprises and catches risky changes early."
+  },
+  {
+    "id": "tf003-iac-01-q024",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Why is Terraform often considered more predictable than ad-hoc scripts?",
+    "options": [
+      "Terraform never changes provider APIs",
+      "Terraform uses state and a planning phase to show expected changes",
+      "Terraform requires every change to be done manually",
+      "Terraform prevents infrastructure from evolving"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform's state + plan phase makes actions transparent before they happen."
+  },
+  {
+    "id": "tf003-iac-01-q025",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "A platform team wants developers to request standard infrastructure safely without giving them full cloud admin access. Terraform can help by:",
+    "options": [
+      "Embedding admin passwords in code for convenience",
+      "Providing approved building blocks and workflows to provision resources consistently",
+      "Disabling approvals so changes are instant",
+      "Forcing developers to use the cloud console directly"
+    ],
+    "correctIndex": 1,
+    "explanation": "Organizations often publish vetted infrastructure building blocks and control how they are applied."
+  },
+  {
+    "id": "tf003-iac-01-q026",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "How can IaC support disaster recovery (DR)?",
+    "options": [
+      "By guaranteeing disasters never happen",
+      "By making it easier to recreate infrastructure in a new region or environment",
+      "By replacing backups",
+      "By removing the need for monitoring"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC helps rebuild infrastructure consistently if you need to recover or replicate environments elsewhere."
+  },
+  {
+    "id": "tf003-iac-01-q027",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which statement best captures Terraform's value proposition?",
+    "options": [
+      "A tool for running containers in production",
+      "A tool for provisioning and managing infrastructure across many platforms using declarative configuration",
+      "A tool for encrypting all network traffic automatically",
+      "A tool for managing employee accounts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform provisions and manages infrastructure across providers using a consistent, declarative approach."
+  },
+  {
+    "id": "tf003-iac-01-q028",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which mindset aligns best with IaC best practices?",
+    "options": [
+      "Treat infrastructure changes like code changes: review, test, and automate",
+      "Avoid automation because infra is too risky",
+      "Make changes directly in production to validate faster",
+      "Store infrastructure details only in people's memory"
+    ],
+    "correctIndex": 0,
+    "explanation": "IaC encourages software engineering practices: reviews, CI, repeatable deployments, and clear history."
+  },
+  {
+    "id": "tf003-iac-01-q029",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Terraform is not limited to cloud providers. Which is another common Terraform use case?",
+    "options": [
+      "Managing SaaS configurations (e.g., DNS, monitoring tools) via providers",
+      "Writing mobile apps for Android",
+      "Editing spreadsheets without formulas",
+      "Replacing compiler toolchains"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform can manage many platforms (including SaaS) via providers, not just core cloud resources."
+  },
+  {
+    "id": "tf003-iac-01-q030",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Which is a realistic risk or challenge of adopting IaC?",
+    "options": [
+      "It eliminates all need for governance and security",
+      "Poorly managed code and workflows can still cause outages if changes are applied incorrectly",
+      "It prevents collaboration",
+      "It makes environments impossible to reproduce"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC is powerful; without reviews, testing, and access controls, changes can still introduce incidents."
+  },
+  {
+    "id": "tf003-iac-01-q031",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "In general, Terraform is most commonly positioned as:",
+    "options": [
+      "An infrastructure provisioning tool (orchestration) rather than in-guest configuration management",
+      "A replacement for text editors",
+      "A database migration framework",
+      "An application performance monitoring tool"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform focuses on provisioning/managing infrastructure resources; other tools may configure software inside servers."
+  },
+  {
+    "id": "tf003-iac-01-q032",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Why is IaC especially valuable in large-scale projects?",
+    "options": [
+      "Because it makes changes invisible",
+      "Because it reduces the need for any approvals",
+      "Because standardized, automated changes reduce operational overhead and inconsistencies",
+      "Because it ensures zero cost"
+    ],
+    "correctIndex": 2,
+    "explanation": "At scale, manual operations become slow and error-prone. IaC standardizes patterns and automates provisioning."
+  },
+  {
+    "id": "tf003-iac-01-q033",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which statement best reflects an IaC-friendly approach to change management?",
+    "options": [
+      "Make changes manually and hope they are remembered",
+      "Prefer automated, repeatable changes from code so environments remain consistent",
+      "Never change infrastructure once created",
+      "Only change infrastructure by editing databases directly"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaC encourages code-driven workflows over manual, untracked edits."
+  },
+  {
+    "id": "tf003-iac-01-q034",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "A team complains that staging doesn't match production. How can Terraform help?",
+    "options": [
+      "By forcing production to be manually edited to match staging",
+      "By using the same Terraform code with environment-specific inputs to keep patterns consistent",
+      "By disabling staging entirely",
+      "By guaranteeing identical data in all environments"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the same IaC codebase across environments reduces drift; only controlled inputs differ."
+  },
+  {
+    "id": "tf003-iac-01-q035",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which organizational goal does IaC most directly support?",
+    "options": [
+      "Standardized, repeatable provisioning with clear change management",
+      "Avoiding any need for backups",
+      "Automatically fixing application bugs",
+      "Removing security responsibilities from engineers"
+    ],
+    "correctIndex": 0,
+    "explanation": "IaC standardizes how infrastructure is created/changed and makes those changes reviewable and reproducible."
+  },
+  {
+    "id": "tf003-iac-01-q036",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Terraform 'use cases' documentation typically highlights:",
+    "options": [
+      "Types of problems Terraform is designed to solve (provisioning, lifecycle management, multi-provider standardization)",
+      "How to write mobile UI components",
+      "How to run SQL queries on production databases",
+      "How to patch Linux kernels manually"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform use cases usually emphasize provisioning and managing infrastructure resources across platforms and environments."
+  },
+  {
+    "id": "tf003-iac-01-q037",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "Which scenario is generally NOT a good primary use case for Terraform?",
+    "options": [
+      "Provisioning cloud infrastructure resources",
+      "Creating and managing networking and managed services",
+      "Performing real-time application request tracing",
+      "Standardizing environments across dev/staging/prod"
+    ],
+    "correctIndex": 2,
+    "explanation": "Real-time tracing is handled by observability/APM tools; Terraform focuses on provisioning and managing infrastructure."
+  },
+  {
+    "id": "tf003-iac-01-q038",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "In Terraform terms, what is an 'execution plan' most closely related to?",
+    "options": [
+      "A preview of changes Terraform proposes to reach the desired state",
+      "A cloud provider bill estimate that Terraform guarantees",
+      "A list of running application processes on a VM",
+      "A permanent record of everything you deployed last year"
+    ],
+    "correctIndex": 0,
+    "explanation": "The plan shows what Terraform intends to create/change/destroy before you apply."
+  },
+  {
+    "id": "tf003-iac-01-q039",
+    "chapter": "tf003-iac-01",
+    "difficulty": "medium",
+    "type": "mcq_single",
+    "question": "Why does Terraform build a dependency graph internally?",
+    "options": [
+      "To determine the correct order to create/update/destroy resources",
+      "To draw network topology diagrams automatically",
+      "To encrypt state files",
+      "To connect to GitHub without credentials"
+    ],
+    "correctIndex": 0,
+    "explanation": "Terraform uses a resource dependency graph to understand ordering and parallelize safe operations."
+  },
+  {
+    "id": "tf003-iac-01-q040",
+    "chapter": "tf003-iac-01",
+    "difficulty": "easy",
+    "type": "mcq_single",
+    "question": "What does 'infrastructure lifecycle management' mean in the context of Terraform?",
+    "options": [
+      "Only creating resources once and never changing them",
+      "Creating, updating, and deleting infrastructure resources as requirements evolve",
+      "Only monitoring infrastructure and sending alerts",
+      "Only documenting infrastructure without provisioning it"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terraform supports creating infrastructure and evolving it over time (updates/replacements/cleanup) via code-driven changes."
+  }
+]

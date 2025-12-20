@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { chapters as baseChapters } from '../data/content'
-import type { Chapter, QuizResult } from '../types/content'
+import type { QuizSection, QuizResult } from '../types/content'
 import {
   QUIZ_RESULTS_STORAGE_KEY,
   QUIZ_RESULTS_UPDATED_EVENT,
@@ -29,19 +29,19 @@ const selectLatestResults = (results: QuizResult[]) => {
   return latestByChapter
 }
 
-const buildEnrichedChapters = (results: QuizResult[]): Chapter[] => {
+const buildEnrichedSections = <T extends QuizSection>(sections: T[], results: QuizResult[]): T[] => {
   const latestByChapter = selectLatestResults(results)
 
-  return baseChapters.map((chapter) => {
-    const latestResult = latestByChapter.get(chapter.id)
+  return sections.map((section) => {
+    const latestResult = latestByChapter.get(section.id)
     if (!latestResult) {
-      return chapter
+      return section
     }
 
     const minutesSpent = coerceMinutes(latestResult.durationSeconds)
 
     return {
-      ...chapter,
+      ...section,
       etaMinutes: minutesSpent,
       lastScore: latestResult.scorePercent,
       timeSpentMinutes: minutesSpent,
@@ -49,8 +49,11 @@ const buildEnrichedChapters = (results: QuizResult[]): Chapter[] => {
   })
 }
 
-export function useChaptersWithStats() {
-  const [enrichedChapters, setEnrichedChapters] = useState<Chapter[]>(() => buildEnrichedChapters(readStoredResults()))
+export function useChaptersWithStats<T extends QuizSection>(sections?: T[]): T[] {
+  const sectionsToUse = (sections ?? baseChapters) as T[]
+  const [enrichedSections, setEnrichedSections] = useState<T[]>(() => 
+    buildEnrichedSections(sectionsToUse, readStoredResults())
+  )
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -58,7 +61,7 @@ export function useChaptersWithStats() {
     }
 
     const refresh = () => {
-      setEnrichedChapters(buildEnrichedChapters(readStoredResults()))
+      setEnrichedSections(buildEnrichedSections(sectionsToUse, readStoredResults()))
     }
 
     const handleStorage = (event: StorageEvent) => {
@@ -75,7 +78,7 @@ export function useChaptersWithStats() {
       window.removeEventListener('storage', handleStorage)
       window.removeEventListener(QUIZ_RESULTS_UPDATED_EVENT, refresh as EventListener)
     }
-  }, [])
+  }, [sectionsToUse])
 
-  return enrichedChapters
+  return enrichedSections
 }
